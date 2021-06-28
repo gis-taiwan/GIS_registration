@@ -14,10 +14,11 @@ const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
-        origin: "https://localhost:3000",
-        methods: ["GET", "POST"],
+        origin: "*",
+        method: "*"
     },
 });
+
 
 // connect to mongoDB
 mongoose.set("useNewUrlParser", true);
@@ -46,19 +47,35 @@ db.once("open", () => {
     };
 
     // define default message when database and socket is connected
-    console.log("database connected");
+    console.log("database connected", process.env.MONGOURL);
 
+    // websocket connection
     io.on("connect", (socket) => {
         console.log("socket connected: " + socket.id);
-    });
 
-    io.on("Login", (email) => {
-        user.find({ Email: email }).exec((err, res) => {
-            if (err) throw err;
+        // Create user in database
+        socket.on("CreateUser", (data) => {
+            user.create(data, (err, res) => {
+                if (err) throw err;
+                
+                console.log(res);
+            })
+        })
 
-            sendData(["getUser", res]);
+        socket.on("Login", (username, passwd) => {
+            user.find({ Username: username, Password: passwd }).exec((err, res) => {
+                if (err) throw err;
+
+                if (res.length == 1) {
+                    sendData(["getUser", res]);  
+                } else {
+                    sendData(["getUserFail", "Invaild Username or Password"]);
+                }
+            
+            });
         });
     });
+
 
     const PORT = process.env.port || 4000;
 

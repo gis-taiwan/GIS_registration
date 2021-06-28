@@ -18,10 +18,9 @@ const UserSchema = Schema({
 	},
 
 	// The account name
-	Account: {
+	Name: {
 		type: String,
 		required: true,
-		unique: true
 	},
 
 	// the encrypted password of an account
@@ -49,6 +48,11 @@ const UserSchema = Schema({
 	Interview: {
 		Avialable: [Number],
 		Final: [Number]
+	},
+
+	Status: {
+		type: String,
+		enum: ['Admitted', 'Pending', 'Rejected', 'Admin']
 	}
 
 }, {
