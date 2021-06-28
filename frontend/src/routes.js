@@ -21,6 +21,7 @@ import Status from "Pages/Status.js";
 import Timetable from "Pages/Timetable.js";
 import Grading from "Pages/Grading.js";
 import Scheduling from "Pages/Scheduling.js";
+import LoginForm from "Pages/Login";
 
 const dashboardRoutes = [
   {
@@ -65,6 +66,13 @@ const dashboardRoutes = [
     component: Scheduling,
     layout: "/admin",
   },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "nc-icon nc-layers-3",
+    component: LoginForm,
+    layout: "/admin",
+  },  
 ];
 
 export default dashboardRoutes;

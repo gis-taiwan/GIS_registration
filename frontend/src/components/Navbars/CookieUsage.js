@@ -33,10 +33,10 @@ const getCookie = (cname) => {
 };
 
 const AuthzFuction = () => {
-  if(getCookie("role") === "NORMAL"){
-    alert("抱歉，您沒有權限。\n");
-    window.location.href = '..';
-  }
+  if(getCookie("role") === "R"){
+      return 1;
+  }else
+      return 0;
 }
 
 export { setCookie, deleteCookie, getCookie, AuthzFuction };

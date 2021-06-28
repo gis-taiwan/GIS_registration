@@ -17,7 +17,7 @@
 */
 // import React, { Component } from "react";
 import { useLocation, NavLink } from "react-router-dom";
-
+import { setCookie, getCookie, AuthzFuction, deleteCookie } from "../Navbars/CookieUsage";
 import { Nav } from "react-bootstrap";
 
 // import logo from "assets/img/reactlogo.png";
@@ -27,6 +27,7 @@ function Sidebar({ color, image, routes }) {
   const activeRoute = (routeName) => {
     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
   };
+
   return (
     <div className="sidebar" data-image={image} data-color={color}>
       <div
@@ -43,7 +44,18 @@ function Sidebar({ color, image, routes }) {
         </div>
         <Nav>
           {routes.map((prop, key) => {
-            if (!prop.redirect)
+            if (!prop.redirect){
+              if(getCookie("username") === "" && prop.name !== "Login"){
+                console.log("1");
+                return null;
+              }else if(getCookie("username") !== "" && AuthzFuction() === 1 && (prop.name === "Grading" || prop.name === "Scheduling" || prop.name === "Login")){
+                console.log("2");
+                return null;
+              }else if(getCookie("username") !== "" && AuthzFuction() === 0 && (prop.name === "Registration Status" || prop.name === "Availaibe Time" || prop.name === "Login")){
+                console.log("3");
+                return null;
+              }
+              
               return (
                 <li
                   className={
@@ -63,6 +75,7 @@ function Sidebar({ color, image, routes }) {
                   </NavLink>
                 </li>
               );
+            }
             return null;
           })}
         </Nav>

@@ -20,7 +20,7 @@ import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
 import routes from "routes.js";
-import { getCookie, deleteCookie } from "../Navbars/CookieUsage.js";
+import { getCookie, deleteCookie, setCookie } from "../Navbars/CookieUsage.js";
 
 function Header() {
   const location = useLocation();
@@ -46,32 +46,34 @@ function Header() {
   };
 
   const Logout = () => {
-    const endpoint = new URL("/logout", process.env.REACT_APP_BACKEND_HOSTNAME)
-      .href;
+    setCookie("role", "", 10);
+    setCookie("username", "", 10);
+    // const endpoint = new URL("/logout", process.env.REACT_APP_BACKEND_HOSTNAME)
+    //   .href;
 
-    fetch(endpoint, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "cors", // no-cors, *cors, same-origin
-      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-      },
-      redirect: "follow", // manual, *follow, error
-      referrerPolicy: "no-referrer",
-    }).then(function (response) {
-      if (response.status === 400) {
-        alert("You haven't login yet!\n");
-      } else {
-        if (getCookie("id") !== "") {
-          deleteCookie();
-          alert("Logout successfully\n");
-          window.location.href = "..";
-        } else {
-          alert("You haven't login yet!\n");
-        }
-      }
-    });
+    // fetch(endpoint, {
+    //   method: "POST", // *GET, POST, PUT, DELETE, etc.
+    //   mode: "cors", // no-cors, *cors, same-origin
+    //   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    //   credentials: "same-origin", // include, *same-origin, omit
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   redirect: "follow", // manual, *follow, error
+    //   referrerPolicy: "no-referrer",
+    // }).then(function (response) {
+    //   if (response.status === 400) {
+    //     alert("You haven't login yet!\n");
+    //   } else {
+    //     if (getCookie("id") !== "") {
+    //       deleteCookie();
+    //       alert("Logout successfully\n");
+    //       window.location.href = "..";
+    //     } else {
+    //       alert("You haven't login yet!\n");
+    //     }
+    //   }
+    // });
   };
 
   return (
@@ -106,7 +108,7 @@ function Header() {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link className="m-0" onClick={(e) => Logout()}>
+              <Nav.Link className="m-0" href="/admin/login" onClick={(e) => Logout()}>
                 <span className="no-icon">Logout</span>
               </Nav.Link>
             </Nav.Item>
