@@ -47,7 +47,7 @@ const dashboardRoutes = [
   },
   {
     path: "/timetable",
-    name: "Availaibe Time",
+    name: "Interview Time",
     icon: "nc-icon nc-compass-05",
     component: Timetable,
     layout: "/admin",
