@@ -1,0 +1,78 @@
+{
+  "name": "aries",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "5.15.2",
+    "@reduxjs/toolkit": "^1.2.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.7",
+    "@types/uuid": "^8.3.0",
+    "axios": "^0.21.1",
+    "bootstrap": "4.6.0",
+    "chartist": "0.10.1",
+    "express": "^4.17.1",
+    "formik": "^2.2.6",
+    "husky": "^5.1.3",
+    "lint-staged": "^10.5.4",
+    "node-sass": "4.14.1",
+    "react": "^17.0.1",
+    "react-bootstrap": "1.4.3",
+    "react-chartist": "0.14.3",
+    "react-confirm-alert": "^2.7.0",
+    "react-dom": "^17.0.1",
+    "react-notification-alert": "0.0.13",
+    "react-redux": "^7.2.0",
+    "react-router": "5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "reactstrap": "8.9.0",
+    "typescript": "~3.8.2",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.9",
+    "zipcode-tw-react": "^1.2.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write .",
+    "server": "node server.ts"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.1.7",
+    "prettier": "2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
