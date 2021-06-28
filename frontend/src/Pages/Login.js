@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
     // setSubmitting(false);
     // // }, 400);
     setCookie("username", values.username, 30); 
-    setCookie("role", "R", 30);   
+    setCookie("role", "A", 30);   
     alert("Login Successfully!\n");
     window.location.href = '..';
   };

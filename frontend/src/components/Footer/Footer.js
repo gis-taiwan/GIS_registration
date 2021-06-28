@@ -26,30 +26,29 @@ class Footer extends Component {
           <nav>
             <ul className="footer-menu">
               <li>
-                <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Home
+                <a href="http://gis-taiwan.ntu.edu.tw/">
+                  GIS Taiwan
                 </a>
               </li>
               <li>
-                <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Company
+                <a href="mailto: delegateaffair@gis-taiwan.ntu.edu.tw">
+                  Email
                 </a>
               </li>
               <li>
-                <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Portfolio
+                <a href="https://www.facebook.com/GISTaiwan" onClick={(e) => e.preventDefault()}>
+                  Facebook
                 </a>
               </li>
               <li>
-                <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                  Blog
+                <a href="https://www.instagram.com/gistaiwan/" onClick={(e) => e.preventDefault()}>
+                  Instagram
                 </a>
               </li>
             </ul>
             <p className="copyright text-center">
               © {new Date().getFullYear()}{" "}
-              <a href="http://www.creative-tim.com">Creative Tim</a>, made with
-              love for a better web
+              <a href="http://www.creative-tim.com">Creative Tim</a>
             </p>
           </nav>
         </Container>

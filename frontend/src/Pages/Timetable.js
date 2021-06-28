@@ -1,10 +1,20 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+// import { Formik, Form, Field } from "formik";
 import {
+  Badge,
+  Button,
+  Card,
+  Navbar,
+  Nav,
+  Table,
+  Container,
   Row,
   Col,
-  Button
+  Form,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
+
 import Modal from "react-bootstrap/Modal";
 
 class Timetable extends React.Component {
@@ -54,9 +64,102 @@ class Timetable extends React.Component {
 
   render() {
     return(
-      <div>
-        <h2>Avalliable Interview Time Period</h2>  
-      </div>
+      <>
+        <Container fluid>
+          <Row>
+            <Col md="12">
+              <Card>
+              <Card.Header>
+                <Card.Title as="h4">Please select the availaible time period(s) for interview</Card.Title>
+              </Card.Header>
+              <Card.Body>
+              <div className="table-full-width">
+                  <Table striped bordered hover>
+                    <thead>
+                      <tr>
+                        <td>Availaible</td>
+                        <td>Time Period</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <Form.Check className="mb-1 pl-0">
+                            <Form.Check.Label>
+                              <Form.Check.Input
+                                defaultValue=""
+                                type="checkbox"
+                              ></Form.Check.Input>
+                              <span className="form-check-sign"></span>
+                            </Form.Check.Label>
+                          </Form.Check>
+                        </td>
+                        <td>
+                          1st, Oct, 2021, 9:00 - 12:00 Monday
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <Form.Check className="mb-1 pl-0">
+                            <Form.Check.Label>
+                              <Form.Check.Input
+                                defaultValue=""
+                                type="checkbox"
+                              ></Form.Check.Input>
+                              <span className="form-check-sign"></span>
+                            </Form.Check.Label>
+                          </Form.Check>
+                        </td>
+                        <td>
+                          1st, Oct, 2021, 14:00 - 17:00 Monday
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <Form.Check className="mb-1 pl-0">
+                            <Form.Check.Label>
+                              <Form.Check.Input
+                                defaultValue=""
+                                type="checkbox"
+                              ></Form.Check.Input>
+                              <span className="form-check-sign"></span>
+                            </Form.Check.Label>
+                          </Form.Check>
+                        </td>
+                        <td>
+                          2nd, Oct, 2021, 9:00 - 12:00 Tuesday
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <Form.Check className="mb-1 pl-0">
+                            <Form.Check.Label>
+                              <Form.Check.Input
+                                defaultValue=""
+                                type="checkbox"
+                              ></Form.Check.Input>
+                              <span className="form-check-sign"></span>
+                            </Form.Check.Label>
+                          </Form.Check>
+                        </td>
+                        <td>
+                          2nd, Oct, 2021, 14:00 - 17:00 Tuesday
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+                <div>
+                <Button type="submit">
+                  Update
+                </Button>
+                </div>
+              </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </>
     );
   }
 }

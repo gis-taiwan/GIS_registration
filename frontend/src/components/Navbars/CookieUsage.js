@@ -33,7 +33,7 @@ const getCookie = (cname) => {
 };
 
 const AuthzFuction = () => {
-  if(getCookie("role") === "R"){
+  if(getCookie("role") === "D"){
       return 1;
   }else
       return 0;

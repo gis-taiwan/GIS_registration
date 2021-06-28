@@ -51,7 +51,7 @@ function Sidebar({ color, image, routes }) {
               }else if(getCookie("username") !== "" && AuthzFuction() === 1 && (prop.name === "Grading" || prop.name === "Scheduling" || prop.name === "Login")){
                 console.log("2");
                 return null;
-              }else if(getCookie("username") !== "" && AuthzFuction() === 0 && (prop.name === "Registration Status" || prop.name === "Availaibe Time" || prop.name === "Login")){
+              }else if(getCookie("username") !== "" && AuthzFuction() === 0 && (prop.name === "Registration Status" || prop.name === "Interview Time" || prop.name === "Login")){
                 console.log("3");
                 return null;
               }
