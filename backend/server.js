@@ -39,6 +39,7 @@ db.on("error", (error) => console.error(error));
 
 // if database connection succeeded
 db.once("open", () => {
+    
     // communicate with frontend server
     const sendData = (data) => {
         const [type, payload] = data;
