@@ -38,7 +38,7 @@ function Sidebar({ color, image, routes }) {
       />
       <div className="sidebar-wrapper">
         <div className="logo d-flex align-items-center justify-content-start">
-          <a className="simple-text" href="http://localhost:3001">
+          <a className="simple-text" href="..">
             GIS Taiwan Registration
           </a>
         </div>

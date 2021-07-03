@@ -1,4 +1,6 @@
 import { useState } from 'react'
+// import io from "socket.io-client/dist/socket.io"
+
 const io = require("socket.io-client");
 
 // define socket.io to establish connection between
