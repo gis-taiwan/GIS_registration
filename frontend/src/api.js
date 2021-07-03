@@ -39,6 +39,10 @@ const API = () => {
         console.log(mssg);
     });
 
+    socket.on("userUpdateSuccess", (mssg) => {
+        console.log(mssg);
+    })
+
     // Success on finding admission data of list of user
     socket.on("findAdmissionList", (data) => {
         if (data == null) {
@@ -54,6 +58,16 @@ const API = () => {
     socket.on("findAdmissionListFail", (mssg) => {
         console.log(mssg);
     });
+
+    // Success on deletion
+    socket.on("deleteUserData", (mssg) => {
+        console.log(mssg)
+    });
+
+    // Failed on deletion
+    socket.on("deleteUserDataFail", (mssg) => {
+        console.log(mssg)
+    })
 
     // Login api
     const LoginAPI = (username, password) => {
@@ -84,7 +98,20 @@ const API = () => {
         console.log("Emitted Users' Admission List Query");
     }
 
-    return {LoginAPI, retrieveUserAPI, retrieveAdmissionAPI};
+    // Update user attribute with object format
+    const updateUserAPI = (username, attr) => {
+        socket.emit("updateUser", username, attr);
+
+        console.log("Emitted Users' Update Request");
+    }
+
+    const deleteUserAPI = (username, passwd) => {
+        socket.emit("deleteUser", username, passwd);
+
+        console.log("Emitted Deletion Request");
+    }
+
+    return {LoginAPI, retrieveUserAPI, retrieveAdmissionAPI, updateUserAPI};
 };
 
 

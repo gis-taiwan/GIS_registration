@@ -111,6 +111,43 @@ db.once("open", () => {
             
             });
         })
+
+        // Update certain attribute of user
+        socket.on("updateUser", (username, attribute) => {
+
+            // Update Attribute of certain user
+            user.update({Username: username}, attribute).exec((err, res) => {
+                if (err) throw err;
+
+                if (res) sendData(["userUpdateSuccess", res]);
+            });
+
+            // renew information of user
+            user.find({ Username: username}).exec((err, res) => {
+                if (err) throw err;
+
+                if (res.length == 1) {
+                    sendData(["getUser", res]);  
+                } else {
+                    sendData(["getUserFail", "Invaild Username or Password"]);
+                }
+            
+            });
+        })
+
+        // Delete User
+        socket.on("deleteUser", (username, passwd) => {
+            user.deleteOne({Username: username, Password: passwd }).exec((err, res) => {
+                if (err) throw err;
+
+                if (res.length != 0) {
+                    sendData(["deleteUserData", res]);  
+                } else {
+                    sendData(["deleteUserDataFail", "Deletion Failed"]);
+                }
+            
+            });
+        })
     });
 
 

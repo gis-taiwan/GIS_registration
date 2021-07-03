@@ -10,9 +10,10 @@ import { getCookie, setCookie } from "components/Navbars/CookieUsage";
 
 import API from "api.js";
 
-const {LoginAPI} = API();
+const {LoginAPI, updateUserAPI} = API();
 
 LoginAPI("Admin", "admin"); 
+updateUserAPI("Admin", {"Role": "a"})
 
 const loginSchema = Yup.object().shape({
   password: Yup.string()
