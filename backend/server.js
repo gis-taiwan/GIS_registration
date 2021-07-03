@@ -75,6 +75,19 @@ db.once("open", () => {
             
             });
         });
+
+        socket.on("findUser", (usernameList) => {
+            user.find({Username: {$in: usernameList}}).exec((err, res) => {
+                if (err) throw err;
+
+                if (res.length != 0) {
+                    sendData(["findUserList", res]);  
+                } else {
+                    sendData(["findUserListFail", "Invalid username list"]);
+                }
+            
+            });
+        })
     });
 
 
