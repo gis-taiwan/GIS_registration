@@ -17,7 +17,7 @@
 */
 // import React, { Component } from "react";
 import { useLocation, NavLink } from "react-router-dom";
-import { setCookie, getCookie, AuthzFuction, deleteCookie } from "../Navbars/CookieUsage";
+import {  getCookie, AuthzFuction} from "../Navbars/CookieUsage";
 import { Nav } from "react-bootstrap";
 
 // import logo from "assets/img/reactlogo.png";
