@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 
 // define the schema of the database
 const user = require("./model/user.js");
+const admission = require("./model/admission.js")
 const fs = require("fs");
 
 const app = express();
@@ -63,7 +64,10 @@ db.once("open", () => {
             })
         })
 
+        // Login Method
         socket.on("Login", (username, passwd) => {
+
+            // Find correct user
             user.find({ Username: username, Password: passwd }).exec((err, res) => {
                 if (err) throw err;
 
@@ -76,7 +80,10 @@ db.once("open", () => {
             });
         });
 
+        // Find a list of user
         socket.on("findUser", (usernameList) => {
+
+            // Find user list
             user.find({Username: {$in: usernameList}}).exec((err, res) => {
                 if (err) throw err;
 
@@ -84,6 +91,22 @@ db.once("open", () => {
                     sendData(["findUserList", res]);  
                 } else {
                     sendData(["findUserListFail", "Invalid username list"]);
+                }
+            
+            });
+        })
+
+        // Find admission data of given list of user
+        socket.on("findAdmission", (usernameList) => {
+
+            // Find admission data
+            admission.find({Username: {$in: usernameList}}).exec((err, res) => {
+                if (err) throw err;
+
+                if (res.length != 0) {
+                    sendData(["findAdmissionList", res]);  
+                } else {
+                    sendData(["findAdmissionListFail", "Invalid username list"]);
                 }
             
             });
