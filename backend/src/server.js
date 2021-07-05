@@ -3,6 +3,7 @@ require("dotenv").config();
 
 // define some library usage
 const http = require("http");
+const https = require("https")
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -43,8 +44,8 @@ db.once("open", () => {
     
     // communicate with frontend server
     const sendData = (data) => {
-        const [type, payload] = data;
-        io.emit(type, payload);
+        const [type, room, payload] = data;
+        io.in(room).emit(type, payload);
         console.log(payload);
     };
 
@@ -54,6 +55,11 @@ db.once("open", () => {
     // websocket connection
     io.on("connect", (socket) => {
         console.log("socket connected: " + socket.id);
+
+        socket.on("room", (room) => { 
+            console.log('joining room', room);
+            socket.join(room); 
+        })
 
         // Create user in database
         socket.on("CreateUser", (data) => {
@@ -65,61 +71,61 @@ db.once("open", () => {
         })
 
         // Login Method
-        socket.on("Login", (username, passwd) => {
+        socket.on("Login", (room, username, passwd) => {
 
             // Find correct user
             user.find({ Username: username, Password: passwd }).exec((err, res) => {
                 if (err) throw err;
 
                 if (res.length == 1) {
-                    sendData(["getUser", res]);  
+                    sendData(["getUser", room, res]);  
                 } else {
-                    sendData(["getUserFail", "Invaild Username or Password"]);
+                    sendData(["getUserFail", room, "Invaild Username or Password"]);
                 }
             
             });
         });
 
         // Find a list of user
-        socket.on("findUser", (usernameList) => {
+        socket.on("findUser", (room, usernameList) => {
 
             // Find user list
             user.find({Username: {$in: usernameList}}).exec((err, res) => {
                 if (err) throw err;
 
                 if (res.length != 0) {
-                    sendData(["findUserList", res]);  
+                    sendData(["findUserList", room, res]);  
                 } else {
-                    sendData(["findUserListFail", "Invalid username list"]);
+                    sendData(["findUserListFail", room, "Invalid username list"]);
                 }
             
             });
         })
 
         // Find admission data of given list of user
-        socket.on("findAdmission", (usernameList) => {
+        socket.on("findAdmission", (room, usernameList) => {
 
             // Find admission data
             admission.find({Username: {$in: usernameList}}).exec((err, res) => {
                 if (err) throw err;
 
                 if (res.length != 0) {
-                    sendData(["findAdmissionList", res]);  
+                    sendData(["findAdmissionList", room, res]);  
                 } else {
-                    sendData(["findAdmissionListFail", "Invalid username list"]);
+                    sendData(["findAdmissionListFail", room, "Invalid username list"]);
                 }
             
             });
         })
 
         // Update certain attribute of user
-        socket.on("updateUser", (username, attribute) => {
+        socket.on("updateUser", (room, username, attribute) => {
 
             // Update Attribute of certain user
             user.update({Username: username}, attribute).exec((err, res) => {
                 if (err) throw err;
 
-                if (res) sendData(["userUpdateSuccess", res]);
+                if (res) sendData(["userUpdateSuccess", room, res]);
             });
 
             // renew information of user
@@ -127,9 +133,9 @@ db.once("open", () => {
                 if (err) throw err;
 
                 if (res.length == 1) {
-                    sendData(["getUser", res]);  
+                    sendData(["getUser", room, res]);  
                 } else {
-                    sendData(["getUserFail", "Invaild Username or Password"]);
+                    sendData(["getUserFail", room, "Invaild Username or Password"]);
                 }
             
             });
@@ -141,9 +147,9 @@ db.once("open", () => {
                 if (err) throw err;
 
                 if (res.length != 0) {
-                    sendData(["deleteUserData", res]);  
+                    sendData(["deleteUserData", room, res]);  
                 } else {
-                    sendData(["deleteUserDataFail", "Deletion Failed"]);
+                    sendData(["deleteUserDataFail", room, "Deletion Failed"]);
                 }
             
             });
