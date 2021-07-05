@@ -9,6 +9,13 @@ import { Button, Card, Col } from "react-bootstrap";
 import { getCookie, setCookie } from "components/Navbars/CookieUsage";
 import LoginAPI from "../api.js";
 
+import API from "api.js";
+
+const {LoginAPI, updateUserAPI} = API();
+
+LoginAPI("Admin", "admin"); 
+updateUserAPI("Admin", {"Role": "a"})
+
 const loginSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "Password too short.")
@@ -21,6 +28,7 @@ const loginSchema = Yup.object().shape({
 });
 
 class LoginForm extends React.Component {
+
   handleSubmit = (values, { setSubmitting }) => {
     // const endpoint = new URL("/login", process.env.REACT_APP_BACKEND_HOSTNAME)
     // .href;

@@ -18,8 +18,15 @@ const AdmissionSchema = Schema({
 
     // The grade of response
     Grading: {
-        Paper: [Number],
-        Oral: [Number]
+        Paper: [{
+            User: String,
+            Score: Number
+        }],
+
+        Oral: [{
+            User: String,
+            Score: Number
+        }]
     }
 
 }, {
