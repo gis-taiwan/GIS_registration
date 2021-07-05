@@ -20,7 +20,7 @@ import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 
 import routes from "routes.js";
-import { getCookie, deleteCookie, setCookie } from "../Navbars/CookieUsage.js";
+import { setCookie } from "../Navbars/CookieUsage.js";
 
 function Header() {
   const location = useLocation();

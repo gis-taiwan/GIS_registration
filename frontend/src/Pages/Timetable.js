@@ -1,21 +1,21 @@
 import React from "react";
 // import { Formik, Form, Field } from "formik";
 import {
-  Badge,
+  // Badge,
   Button,
   Card,
-  Navbar,
-  Nav,
+  // Navbar,
+  // Nav,
   Table,
   Container,
   Row,
   Col,
   Form,
-  OverlayTrigger,
-  Tooltip,
+  // OverlayTrigger,
+  // Tooltip,
 } from "react-bootstrap";
 
-import Modal from "react-bootstrap/Modal";
+// import Modal from "react-bootstrap/Modal";
 
 class Timetable extends React.Component {
 

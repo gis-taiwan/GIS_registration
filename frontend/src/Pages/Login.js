@@ -7,6 +7,7 @@ import * as Yup from "yup";
 
 import { Button, Card, Col } from "react-bootstrap";
 import { getCookie, setCookie } from "components/Navbars/CookieUsage";
+import LoginAPI from "../api.js";
 
 import API from "api.js";
 
@@ -59,9 +60,10 @@ class LoginForm extends React.Component {
     // })
     // setSubmitting(false);
     // // }, 400);
+    LoginAPI(values.username, values.password);
     setCookie("username", values.username, 30); 
     setCookie("role", "A", 30);   
-    alert("Login Successfully!\n");
+    // alert("Login Successfully!\n");
     window.location.href = '..';
   };
   
