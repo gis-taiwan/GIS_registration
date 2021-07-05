@@ -8,10 +8,19 @@ const io = require("socket.io-client");
 // define socket.io to establish connection between
 const socket = io("http://localhost:4000", { secure: true });
 
+socket.on("connect", () => {
+    console.log("socket connected: " + socket.id);
+
+    socket.emit('room', socket.id);
+
+    setCookie("room", socket.id, 60);
+});
+
 const API = () => {
 
     // If success get user
     socket.on("getUser", (data) => {
+        console.log("socket connected: " + socket.id);
         if (data == null) {
             console.log("Invalid username or password");
         } else {
@@ -81,7 +90,7 @@ const API = () => {
         });
     
         // handle messages comming from backend
-        socket.emit("Login", username, password);
+        socket.on(getCookie("room")).emit("Login", username, password);
 
         console.log("Emitted Login")
     
@@ -89,27 +98,27 @@ const API = () => {
 
     // retrieve user data of list of user
     const retrieveUserAPI = (usernameList) => {
-        socket.emit("findUser", usernameList);
+        socket.on(getCookie("room")).emit("findUser", getCookie("room"), usernameList);
 
         console.log("Emitted User List Query");
     }
 
     // retrieve admission data of list of user
     const retrieveAdmissionAPI = (usernameList) => {
-        socket.emit("findAdmission", usernameList);
+        socket.on(getCookie("room")).emit("findAdmission", getCookie("room"), usernameList);
 
         console.log("Emitted Users' Admission List Query");
     }
 
     // Update user attribute with object format
     const updateUserAPI = (username, attr) => {
-        socket.emit("updateUser", username, attr);
+        socket.on(getCookie("room")).emit("updateUser", getCookie("room"), username, attr);
 
         console.log("Emitted Users' Update Request");
     }
 
     const deleteUserAPI = (username, passwd) => {
-        socket.emit("deleteUser", username, passwd);
+        socket.on(getCookie("room")).emit("deleteUser", getCookie("room"), username, passwd);
 
         console.log("Emitted Deletion Request");
     }
