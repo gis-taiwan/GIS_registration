@@ -1,17 +1,14 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import {
   Card,
   Col,
   Container,
   Row,
-  Tab,
-  Table,
+  Form,
   Button,
 } from "react-bootstrap";
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-
 
 
 
@@ -25,6 +22,8 @@ export default class GradingShowPage extends React.Component{
       nowrow: undefined,
       nowsheet: undefined,
       redirect: undefined,
+      Grade1: 0,
+      Grade2: 0,
     }
   }
 
@@ -47,22 +46,22 @@ export default class GradingShowPage extends React.Component{
       const sheet = doc.sheetsByIndex[0];
       const rows = await sheet.getRows();
       const nowrow = rows[this.state.editId - 1];
-      this.setState({doc: doc, nowsheetlen: sheet, nowrow: nowrow});
+      this.setState({doc: doc, nowsheet: sheet, nowrow: nowrow, Grade1: nowrow.Grade1, Grade2: nowrow.Grade2});
     }else{
       alert("Can't find file\n");
     }
-    
-    // console.log(doc.title);
-    // await doc.updateProperties({ title: 'renamed doc' });
   
-    // const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
-    // console.log(sheet.title);
-    // console.log(sheet.rowCount);
-  
-    // // adding / removing sheets
-    // const newSheet = await doc.addSheet({ title: 'hot new sheet!' });
-    // await newSheet.delete();
-  
+  }
+
+  componentDidUpdate = async () => {
+    await this.InitAPI();
+  }
+
+  UpdateGrade = async () => {
+    this.state.nowrow.Grade1 = this.state.Grade1;
+    this.state.nowrow.Grade2 = this.state.Grade2;
+    this.state.nowrow.TotalGrade = Number(this.state.Grade1) + Number(this.state.Grade2);
+    await this.state.nowrow.save();
   }
 
   render(){
@@ -72,32 +71,272 @@ export default class GradingShowPage extends React.Component{
       </>);
 
     const { nowrow } = this.state;
-    
+    const essayid = nowrow.Essay.substring(33);
 
     return (
       <>
         <Container fluid>
-        <h4>{nowrow.name} </h4>
-          <Row>
-            <Col md="12">
-              <Card className="strpied-tabled-with-hover">
-                <Card.Header>
-              
-                  <h4>{nowrow.name} </h4>
-                </Card.Header>
-                <Card.Body className="table-full-width table-responsive px-0">
-                  <Table className="table-hover table-striped">
-                    <thead>
-                    </thead>
-                    <tbody>
-                           
-                  
-                    </tbody>
-                  </Table>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
+        <Row>
+        <Col md="12">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">Basic Info For Registor No. {nowrow.ID}</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Form>
+                  <Row>
+                    <Col className="px-2" md="4">
+                      <Form.Group>
+                        <label>Name</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Name}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="4">
+                      <Form.Group>
+                        <label>Passport Name</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Passport}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="4">
+                      <Form.Group>
+                        <label>Sex</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Sex}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                   <Row>
+                  <Col className="px-2" md="4">
+                      <Form.Group>
+                      <label>Email</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Email}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="2">
+                      <Form.Group>
+                      <label>BirthDay</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Birthday}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="2">
+                      <Form.Group>
+                      <label>Nationality</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Nationality}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="4">
+                      <Form.Group>
+                      <label>Where do you come from</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Where}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
+
+                  <Row>
+                  <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>Education Level</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Education}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>Current Institution</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.CurrentUniversity}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>Major</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Major}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>Year</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Year}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                  <Col className="px-2" md="6">
+                      <Form.Group>
+                      <label>Speech Priority 1</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Speech1}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="6">
+                      <Form.Group>
+                      <label>Speech Priority 2</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.Speech2}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                  <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>AP priority 1</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.AP1}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>AP priority 2</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.AP2}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>AP priority 3</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.AP3}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>AP priority 4</label>
+                        <Form.Control
+                          type="text"
+                          defaultValue={nowrow.AP4}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                </Form>
+              </Card.Body>
+            </Card>
+            
+          </Col>
+          
+        </Row>
+        <Row>
+          <Col md="12">
+            <Card>
+            <Card.Header>
+              <Card.Title as="h4">Essay Viewer</Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="responsive-iframe" src={"https://drive.google.com/file/d/" + essayid + "/preview"}></iframe>
+              </div>
+            </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12">
+            <Card>
+            <Card.Header>
+              <Card.Title as="h4">Grading</Card.Title>
+            </Card.Header>
+            <Card.Body>
+                <Row>
+                  <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>Essay Grade</label>
+                        <Form.Control
+                          type="number"
+                          defaultValue={nowrow.Grade1}
+                          onChange={e => this.setState({ Grade1: e.target.value})}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="3">
+                      <Form.Group>
+                      <label>Interview Grade</label>
+                        <Form.Control
+                          type="number"
+                          defaultValue={nowrow.Grade2}
+                          onChange={e => this.setState({ Grade2: e.target.value})}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="6">
+                      <Form.Group>
+                      <label>Total Grade</label>
+                        <Form.Control
+                          type="number"
+                          defaultValue={nowrow.TotalGrade}
+                          disabled
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    </Row>
+                    <Row>
+                    <Col className="px-2" md="12">
+                      <Button variant="info" onClick={() => this.UpdateGrade()} > Update Grade </Button>
+                    </Col>
+                  </Row>
+            </Card.Body>
+            </Card>
+          </Col>
+        </Row>
           
         </Container>
       </>

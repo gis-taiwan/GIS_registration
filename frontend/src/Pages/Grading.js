@@ -82,27 +82,27 @@ export default class Grading extends React.Component{
       },
       {
         name: "Sex",
-        columnWidth: "10%",
+        columnWidth: "15%",
       },
       {
         name: "Nationality",
-        columnWidth: "20%",
+        columnWidth: "15%",
       },
       {
         name: "Year",
-        columnWidth: "15%",
+        columnWidth: "30%",
       },
       {
         name: "Grade1",
-        columnWidth: "10%",
+        columnWidth: "5%",
       },
       {
         name: "Grade2",
-        columnWidth: "10%",
+        columnWidth: "5%",
       },
       {
         name: "TotalGrade",
-        columnWidth: "15%",
+        columnWidth: "10%",
       },
       {
         name: "",
