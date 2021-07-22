@@ -6,7 +6,7 @@ const io = require("socket.io-client");
 
 
 // define socket.io to establish connection between
-const socket = io("http://localhost:4000", { secure: true });
+const socket = io("http://api.registration.gis-taiwan.ntu.edu.tw/", { secure: true });
 
 socket.on("connect", () => {
     console.log("socket connected: " + socket.id);
@@ -17,6 +17,10 @@ socket.on("connect", () => {
 });
 
 const API = () => {
+
+	socket.on("roomCreate", (mssg) => {
+		console.log(mssg);
+	})
 
     // If success get user
     socket.on("getUser", (data) => {

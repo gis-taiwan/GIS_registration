@@ -46,13 +46,13 @@ function Sidebar({ color, image, routes }) {
           {routes.map((prop, key) => {
             if (!prop.redirect){
               if(getCookie("username") === "" && prop.name !== "Login"){
-                console.log("1");
+                // console.log("1");
                 return null;
               }else if(getCookie("username") !== "" && AuthzFuction() === 1 && (prop.name === "Grading" || prop.name === "Scheduling" || prop.name === "Login")){
-                console.log("2");
+                // console.log("2");
                 return null;
               }else if(getCookie("username") !== "" && AuthzFuction() === 0 && (prop.name === "Registration Status" || prop.name === "Interview Time" || prop.name === "Login")){
-                console.log("3");
+                // console.log("3");
                 return null;
               }
               

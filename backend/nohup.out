@@ -1,0 +1,1069 @@
+yarn run v1.22.5
+$ nodemon
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,json[39m
+[32m[nodemon] starting `babel-node src/server.js &`[39m
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:202:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:539:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+database connected mongodb+srv://admin:admin@cluster0.1fqvj.mongodb.net/Cluster0?retryWrites=true&w=majority
+Listening on https://localhost:9000
+socket connected: hNrKA7xnwOSZx6PzAAAB
+joining room hNrKA7xnwOSZx6PzAAAB
+(node:42197) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625993915 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625993915 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625993915 }
+}
+Invaild Username or Password
+socket connected: 8jFoqb7GQSwhD0xDAAAD
+Invaild Username or Password
+joining room 8jFoqb7GQSwhD0xDAAAD
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 }
+}
+socket connected: d4kmRHHHQ5JptyrpAAAF
+Invaild Username or Password
+joining room d4kmRHHHQ5JptyrpAAAF
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 }
+}
+socket connected: NxnhIR73eczTwdQuAAAH
+joining room NxnhIR73eczTwdQuAAAH
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994056 }
+}
+Invaild Username or Password
+Invaild Username or Password
+socket connected: 3nNRhOtSiNqCUBWqAAAJ
+Invaild Username or Password
+joining room 3nNRhOtSiNqCUBWqAAAJ
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994074 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994074 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994074 }
+}
+Invaild Username or Password
+socket connected: _KiKP_VFoCAhaQvnAAAL
+joining room _KiKP_VFoCAhaQvnAAAL
+socket connected: U5uza_TV_eCW0X_EAAAN
+Invaild Username or Password
+joining room U5uza_TV_eCW0X_EAAAN
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994233 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994233 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994233 }
+}
+Invaild Username or Password
+Invaild Username or Password
+socket connected: pWWjDxYGg3JAJ2vAAAAP
+Invaild Username or Password
+joining room pWWjDxYGg3JAJ2vAAAAP
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994233 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994233 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994233 }
+}
+socket connected: p_eb_Jwcxtyy9cRKAAAR
+joining room p_eb_Jwcxtyy9cRKAAAR
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 }
+}
+Invaild Username or Password
+socket connected: ky2YIJAW-pdjCZE4AAAT
+Invaild Username or Password
+joining room ky2YIJAW-pdjCZE4AAAT
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 }
+}
+socket connected: ITY0b6GhKrBhjZXqAAAV
+Invaild Username or Password
+joining room ITY0b6GhKrBhjZXqAAAV
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1625994356 }
+}
+Invaild Username or Password
+yarn run v1.22.5
+$ nodemon
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,json[39m
+[32m[nodemon] starting `babel-node src/server.js &`[39m
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:202:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:539:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+database connected mongodb+srv://admin:admin@cluster0.1fqvj.mongodb.net/Cluster0?retryWrites=true&w=majority
+Listening on https://localhost:8080
+socket connected: F2do95B-hyECSvWsAAAB
+joining room F2do95B-hyECSvWsAAAB
+room create handshake
+socket connected: PdVTahGFHfJhcw_GAAAD
+joining room PdVTahGFHfJhcw_GAAAD
+room create handshake
+socket connected: FxdzSY_zd6Q32gjYAAAF
+Invaild Username or Password
+joining room FxdzSY_zd6Q32gjYAAAF
+room create handshake
+(node:43444) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 2, high_: 1625994484 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 2, high_: 1625994484 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 2, high_: 1625994484 }
+}
+Invaild Username or Password
+socket connected: tNgFTURZtFIY2D8JAAAH
+Invaild Username or Password
+joining room tNgFTURZtFIY2D8JAAAH
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 2, high_: 1625994484 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 2, high_: 1625994484 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 2, high_: 1625994484 }
+}
+socket connected: XX1RHwXKKyj64OXGAAAJ
+Invaild Username or Password
+joining room XX1RHwXKKyj64OXGAAAJ
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 11, high_: 1625995618 },
+    t: 21
+  },
+  electionId: 7fffffff0000000000000015,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 11, high_: 1625995618 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 11, high_: 1625995618 }
+}
+yarn run v1.22.5
+$ nodemon
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,json[39m
+[32m[nodemon] starting `babel-node src/server.js &`[39m
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:202:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:539:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+database connected mongodb+srv://admin:admin@cluster0.1fqvj.mongodb.net/Cluster0?retryWrites=true&w=majority
+Listening on https://localhost:8080
+socket connected: bdr7niRZSnGCZg41AAAB
+joining room bdr7niRZSnGCZg41AAAB
+room create handshake
+(node:62370) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505489 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505489 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505489 }
+}
+Invaild Username or Password
+Invaild Username or Password
+socket connected: gSIkYwrho5oeEs6MAAAD
+Invaild Username or Password
+joining room gSIkYwrho5oeEs6MAAAD
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505489 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505489 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505489 }
+}
+socket connected: ODQ6gox6Hz1pqc1SAAAF
+Invaild Username or Password
+joining room ODQ6gox6Hz1pqc1SAAAF
+room create handshake
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 }
+}
+Invaild Username or Password
+socket connected: sTZLho0dEkVhIasmAAAH
+Invaild Username or Password
+joining room sTZLho0dEkVhIasmAAAH
+room create handshake
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 }
+}
+Invaild Username or Password
+Invaild Username or Password
+socket connected: g_sSLZc2vh8E4nz8AAAJ
+Invaild Username or Password
+joining room g_sSLZc2vh8E4nz8AAAJ
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505678 }
+}
+socket connected: lwo1cixK2lUfZ4YCAAAL
+joining room lwo1cixK2lUfZ4YCAAAL
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505931 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505931 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626505931 }
+}
+Invaild Username or Password
+socket connected: PO1vwYkbpKq9pu1GAAAN
+Invaild Username or Password
+joining room PO1vwYkbpKq9pu1GAAAN
+room create handshake
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626525490 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626525490 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626525490 }
+}
+Invaild Username or Password
+Invaild Username or Password
+socket connected: 9FiTn35awymim9K8AAAP
+joining room 9FiTn35awymim9K8AAAP
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626525502 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626525502 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626525502 }
+}
+Invaild Username or Password
+socket connected: H_Mmiesbc6WH6NlPAAAR
+joining room H_Mmiesbc6WH6NlPAAAR
+room create handshake
+Invaild Username or Password
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626531729 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626531729 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626531729 }
+}
+Invaild Username or Password
+socket connected: 3rJZqM6ivree0wsgAAAT
+Invaild Username or Password
+joining room 3rJZqM6ivree0wsgAAAT
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626531729 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626531729 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626531729 }
+}
+socket connected: Rj2vOS2SeqiWFOikAAAV
+Invaild Username or Password
+joining room Rj2vOS2SeqiWFOikAAAV
+room create handshake
+Invaild Username or Password
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626683454 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626683454 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626683454 }
+}
+socket connected: 2zLwV272vuuGE6KSAAAX
+Invaild Username or Password
+joining room 2zLwV272vuuGE6KSAAAX
+room create handshake
+{
+  n: 0,
+  nModified: 0,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626684043 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626684043 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626684043 }
+}
+Invaild Username or Password
+yarn run v1.22.5
+$ nodemon
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,json[39m
+[32m[nodemon] starting `babel-node src/server.js &`[39m
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:202:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:539:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+database connected mongodb+srv://admin:admin@cluster0.1fqvj.mongodb.net/Cluster0?retryWrites=true&w=majority
+Listening on https://localhost:8080
+MongoError: E11000 duplicate key error collection: Cluster0.User index: username_1 dup key: { username: null }
+    at Function.create (/home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/core/error.js:57:12)
+    at toError (/home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/utils.js:130:22)
+    at /home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/operations/common_functions.js:258:39
+    at handler (/home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/core/sdam/topology.js:943:24)
+    at /home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/cmap/connection_pool.js:350:13
+    at handleOperationResult (/home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/core/sdam/server.js:558:5)
+    at MessageStream.messageHandler (/home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/cmap/connection.js:281:5)
+    at MessageStream.emit (events.js:315:20)
+    at MessageStream.EventEmitter.emit (domain.js:467:12)
+    at processIncomingData (/home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/cmap/message_stream.js:144:12)
+    at MessageStream._write (/home/GISadmin/GIS_registration/backend/node_modules/mongodb/lib/cmap/message_stream.js:42:5)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at TLSSocket.EventEmitter.emit (domain.js:467:12) {
+  driver: true,
+  index: 0,
+  code: 11000,
+  keyPattern: { username: 1 },
+  keyValue: { username: null }
+}
+undefined
+socket connected: zeC8-j8tE-Y-lTxUAAAB
+Invaild Username or Password
+joining room zeC8-j8tE-Y-lTxUAAAB
+room create handshake
+(node:5191) DeprecationWarning: collection.update is deprecated. Use updateOne, updateMany, or bulkWrite instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-19T09:08:18.432Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691619 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691619 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691619 }
+}
+Invaild Username or Password
+socket connected: r_OCddWgBLlL-OKTAAAD
+Invaild Username or Password
+joining room r_OCddWgBLlL-OKTAAAD
+room create handshake
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-19T10:48:55.377Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691735 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691735 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691735 }
+}
+socket connected: pSxFGBqg-S-c7HIkAAAF
+joining room pSxFGBqg-S-c7HIkAAAF
+room create handshake
+socket connected: -ZfGQhPqPgsDI2_IAAAH
+Invaild Username or Password
+joining room -ZfGQhPqPgsDI2_IAAAH
+room create handshake
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-19T10:48:55.377Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691846 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691846 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691846 }
+}
+Invaild Username or Password
+socket connected: 9xLeTPydxPAovD6xAAAJ
+Invaild Username or Password
+joining room 9xLeTPydxPAovD6xAAAJ
+room create handshake
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691850 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691850 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626691850 }
+}
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-19T10:50:50.166Z,
+    __v: 0
+  }
+]
+socket connected: wjtnhhkV8PaPvpf-AAAL
+Invaild Username or Password
+joining room wjtnhhkV8PaPvpf-AAAL
+room create handshake
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-19T10:50:50.166Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626696441 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626696441 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626696441 }
+}
+socket connected: FdndwlaZM_CEd7d7AAAN
+Invaild Username or Password
+socket connected: GuVNjoZ6nz3qkv9bAAAP
+Invaild Username or Password
+joining room GuVNjoZ6nz3qkv9bAAAP
+room create handshake
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-19T12:07:21.447Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626859216 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626859216 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626859216 }
+}
+Invaild Username or Password
+socket connected: dJIyssxiS3tZJunQAAAR
+Invaild Username or Password
+joining room dJIyssxiS3tZJunQAAAR
+room create handshake
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-21T09:20:16.135Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626862761 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626862761 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626862761 }
+}
+socket connected: 9iIFoeJLjIl43AgaAAAT
+joining room 9iIFoeJLjIl43AgaAAAT
+room create handshake
+Invaild Username or Password
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-22T06:29:07.436Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626935347 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626935347 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626935347 }
+}
+Invaild Username or Password
+socket connected: 3gyqp8j4w9gMjUR-AAAV
+Invaild Username or Password
+joining room 3gyqp8j4w9gMjUR-AAAV
+room create handshake
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-22T06:29:07.436Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626935348 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626935348 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626935348 }
+}
+socket connected: YfMgAS2AB3-4mK0FAAAX
+joining room YfMgAS2AB3-4mK0FAAAX
+room create handshake
+Invaild Username or Password
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626936069 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626936069 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626936069 }
+}
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-22T06:41:09.131Z,
+    __v: 0
+  }
+]
+socket connected: 32U3nQX2ZyRo8G2LAAAZ
+joining room 32U3nQX2ZyRo8G2LAAAZ
+room create handshake
+Invaild Username or Password
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-22T06:55:53.472Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626936953 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626936953 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626936953 }
+}
+socket connected: KSCaFXRugr5eqYlgAAAb
+joining room KSCaFXRugr5eqYlgAAAb
+room create handshake
+socket connected: 5WFjMNHPRG4Fbag6AAAd
+joining room 5WFjMNHPRG4Fbag6AAAd
+room create handshake
+Invaild Username or Password
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626938662 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626938662 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626938662 }
+}
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-22T07:24:22.330Z,
+    __v: 0
+  }
+]
+Invaild Username or Password
+socket connected: k71nj0NOWkHrbTz8AAAf
+joining room k71nj0NOWkHrbTz8AAAf
+room create handshake
+Invaild Username or Password
+[
+  {
+    Interview: { Avialable: [], Final: [] },
+    _id: 60f540f807ef2e13e7968157,
+    Username: 'Admin',
+    Email: 'admin@test',
+    Name: 'Admin Test',
+    Password: 'admin',
+    Role: 'a',
+    createdAt: 2021-07-19T09:08:08.495Z,
+    updatedAt: 2021-07-22T07:24:22.330Z,
+    __v: 0
+  }
+]
+{
+  n: 1,
+  nModified: 1,
+  opTime: {
+    ts: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626938664 },
+    t: 22
+  },
+  electionId: 7fffffff0000000000000016,
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626938664 },
+    signature: { hash: [Binary], keyId: [Long] }
+  },
+  operationTime: Timestamp { _bsontype: 'Timestamp', low_: 1, high_: 1626938664 }
+}

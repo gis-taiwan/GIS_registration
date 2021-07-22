@@ -7,7 +7,7 @@ import * as Yup from "yup";
 
 import { Button, Card, Col } from "react-bootstrap";
 import { getCookie, setCookie } from "components/Navbars/CookieUsage";
-import LoginAPI from "../api.js";
+// import LoginAPI from "../api.js";
 
 import API from "api.js";
 

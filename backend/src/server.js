@@ -42,6 +42,14 @@ db.on("error", (error) => console.error(error));
 // if database connection succeeded
 db.once("open", () => {
     
+	user.create({Username: "Admin", Email: "admin@test", Name: "Admin Test", Password: "admin", Role: "Z"}, (err, res) => {
+		if (err) console.log(err)
+
+		console.log(res)
+	})
+
+
+
     // communicate with frontend server
     const sendData = (data) => {
         const [type, room, payload] = data;
@@ -51,7 +59,7 @@ db.once("open", () => {
 
     // define default message when database and socket is connected
     console.log("database connected", process.env.MONGOURL);
-
+	
     // websocket connection
     io.on("connect", (socket) => {
         console.log("socket connected: " + socket.id);
@@ -59,7 +67,8 @@ db.once("open", () => {
         socket.on("room", (room) => { 
             console.log('joining room', room);
             socket.join(room); 
-        })
+        	sendData(["roomCreate", room, "room create handshake"]);
+		})
 
         // Create user in database
         socket.on("CreateUser", (data) => {
@@ -118,6 +127,7 @@ db.once("open", () => {
             });
         })
 
+
         // Update certain attribute of user
         socket.on("updateUser", (room, username, attribute) => {
 
@@ -153,13 +163,13 @@ db.once("open", () => {
                 }
             
             });
-        })
-    });
+		});
+	});
 
-
-    const PORT = process.env.port || 4000;
+	const PORT = process.env.port || 8080;
 
     server.listen(PORT, () => {
         console.log(`Listening on https://localhost:${PORT}`);
     });
+	
 });

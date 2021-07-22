@@ -15,12 +15,12 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 
 
-export default class Grading extends React.Component{
+export default class GradingShowPage extends React.Component{
   
   constructor(){
     super();
     this.state = {
-      editId: 0,
+      editId: undefined,
       doc: undefined,
       nowrow: undefined,
       nowsheet: undefined,
@@ -29,6 +29,7 @@ export default class Grading extends React.Component{
   }
 
   async componentDidMount() {
+    this.setState({editId: this.props.ID});
     await this.InitAPI();
   }
 
@@ -45,7 +46,8 @@ export default class Grading extends React.Component{
     if(doc){
       const sheet = doc.sheetsByIndex[0];
       const rows = await sheet.getRows();
-      this.setState({doc: doc, nowsheetlen: sheet, nowrow: rows});
+      const nowrow = rows[this.state.editId - 1];
+      this.setState({doc: doc, nowsheetlen: sheet, nowrow: nowrow});
     }else{
       alert("Can't find file\n");
     }
@@ -69,95 +71,25 @@ export default class Grading extends React.Component{
         <Container> </Container>
       </>);
 
-    if (this.state.redirect) {
-      return <Redirect to={this.state.redirect} />;
-    }
-    const { nowrow, sheet } = this.state;
+    const { nowrow } = this.state;
     
 
-    const columns = [
-      {
-        name: "Name",
-        columnWidth: "10%",
-      },
-      {
-        name: "Sex",
-        columnWidth: "10%",
-      },
-      {
-        name: "Nationality",
-        columnWidth: "20%",
-      },
-      {
-        name: "Year",
-        columnWidth: "15%",
-      },
-      {
-        name: "Grade1",
-        columnWidth: "10%",
-      },
-      {
-        name: "Grade2",
-        columnWidth: "10%",
-      },
-      {
-        name: "TotalGrade",
-        columnWidth: "15%",
-      },
-      {
-        name: "",
-        columnWidth: "10%",
-      },
-    ];
     return (
       <>
         <Container fluid>
+        <h4>{nowrow.name} </h4>
           <Row>
             <Col md="12">
               <Card className="strpied-tabled-with-hover">
                 <Card.Header>
               
-                  
+                  <h4>{nowrow.name} </h4>
                 </Card.Header>
                 <Card.Body className="table-full-width table-responsive px-0">
                   <Table className="table-hover table-striped">
                     <thead>
-                      <tr>
-                        {columns.map((col) => {
-                          return (
-                            <th
-                              key={col.name}
-                              className="border-0"
-                              style={{ width: col.columnWidth }}
-                            >
-                              {col.name}
-                            </th>
-                          );
-                        })}
-                      </tr>
                     </thead>
-                    <tbody>{
-                      nowrow.map((row) => {
-                          return (
-                            <tr key={row.ID} >
-                              <td> {row.Name} </td>
-                              <td> {row.Sex} </td>
-                              <td> {row.Nationality} </td>
-                              <td> {row.Year} </td>
-                              <td> {row.Grade1} </td>
-                              <td> {row.Grade2} </td>
-                              <td> {row.TotalGrade} </td>
-                              <td>
-                                <Button variant="info" onClick={() =>
-                                this.setState({
-                                  redirect: "/admin/grading/" + row.ID,
-                                })
-                              } > EditGrade </Button>
-                              </td>
-                            </tr>
-                        );
-                      })  
-                    }
+                    <tbody>
                            
                   
                     </tbody>

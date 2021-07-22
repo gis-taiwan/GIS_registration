@@ -25,6 +25,7 @@ ReactDOM.render(
             <Redirect from="/" to="/admin/dashboard" />
           </Switch>
         </BrowserRouter>
+        <script async defer src="https://apis.google.com/js/api.js"> </script>
   </React.StrictMode>,
   document.getElementById("root")
 );

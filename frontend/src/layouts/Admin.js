@@ -26,6 +26,7 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 import routes from "routes.js";
 // import { getCookie } from "../components/Navbars/CookieUsage.js";
 import sidebarImage from "assets/img/sidebar-6.png";
+import GradingShowPage from "Pages/GradingShowPage";
 
 function Admin(props) {
   const [image, setImage] = React.useState(sidebarImage);
@@ -72,7 +73,15 @@ function Admin(props) {
           <div className="main-panel" ref={mainPanel}>
             <AdminNavbar />
             <div className="content">
-              <Switch>{getRoutes(routes)}</Switch>
+              <Switch>
+              <Route
+                  exact
+                  path={"/admin/grading/:id"}
+                  render={({ match }) => (
+                    <GradingShowPage ID={match.params.id} />
+                  )}
+              />
+              {getRoutes(routes)}</Switch>
             </div>
             <Footer />
           </div>
