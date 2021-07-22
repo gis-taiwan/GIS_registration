@@ -53,15 +53,12 @@ export default class GradingShowPage extends React.Component{
   
   }
 
-  componentDidUpdate = async () => {
-    await this.InitAPI();
-  }
-
   UpdateGrade = async () => {
     this.state.nowrow.Grade1 = this.state.Grade1;
     this.state.nowrow.Grade2 = this.state.Grade2;
     this.state.nowrow.TotalGrade = Number(this.state.Grade1) + Number(this.state.Grade2);
     await this.state.nowrow.save();
+    window.location.reload();
   }
 
   render(){
