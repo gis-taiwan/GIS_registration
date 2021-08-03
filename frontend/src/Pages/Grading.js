@@ -34,7 +34,7 @@ export default class Grading extends React.Component{
 
   InitAPI = async () => {
     // Initialize the sheet - doc ID is the long id in the sheets URL
-    const doc = new GoogleSpreadsheet('1hMRtMXD753RMXQBS1w1CcDLMoiPsZBSo2AiDBFQvN2M');
+    const doc = new GoogleSpreadsheet('1mzsQvalD22B_wohp74hE9fxpXQN_zPv_eGr8hXU30Eg');
   
     // Initialize Auth - see more available options at https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
     await doc.useServiceAccountAuth({
@@ -90,23 +90,23 @@ export default class Grading extends React.Component{
       },
       {
         name: "Year",
-        columnWidth: "30%",
+        columnWidth: "25%",
       },
       {
-        name: "Grade1",
-        columnWidth: "5%",
+        name: "Status",
+        columnWidth: "15%",
       },
-      {
-        name: "Grade2",
-        columnWidth: "5%",
-      },
-      {
-        name: "TotalGrade",
-        columnWidth: "10%",
-      },
+      // {
+      //   name: "Grade2",
+      //   columnWidth: "5%",
+      // },
+      // {
+      //   name: "TotalGrade",
+      //   columnWidth: "10%",
+      // },
       {
         name: "",
-        columnWidth: "10%",
+        columnWidth: "20%",
       },
     ];
     return (
@@ -116,7 +116,7 @@ export default class Grading extends React.Component{
             <Col md="12">
               <Card className="strpied-tabled-with-hover">
                 <Card.Header>
-              
+                <Card.Title as="h4">Grading Page For 2022 GIS Registration</Card.Title>
                   
                 </Card.Header>
                 <Card.Body className="table-full-width table-responsive px-0">
@@ -144,15 +144,20 @@ export default class Grading extends React.Component{
                               <td> {row.Sex} </td>
                               <td> {row.Nationality} </td>
                               <td> {row.Year} </td>
-                              <td> {row.Grade1} </td>
-                              <td> {row.Grade2} </td>
-                              <td> {row.TotalGrade} </td>
-                              <td>
-                                <Button variant="info" onClick={() =>
+                              <td> {row.Status} </td>
+                              {/* <td> {row.Grade2} </td>
+                              <td> {row.TotalGrade} </td> */}
+                              <td style={{float: 'right'}}>
+                                <Button variant="info"  onClick={() =>
                                 this.setState({
                                   redirect: "/admin/grading/" + row.ID,
                                 })
-                              } > EditGrade </Button>
+                              } > Essay </Button>
+                                <Button variant="warning"  onClick={() =>
+                                this.setState({
+                                  redirect: "/admin/oralgrading/" + row.ID,
+                                })
+                              } > Oral </Button>                              
                               </td>
                             </tr>
                         );

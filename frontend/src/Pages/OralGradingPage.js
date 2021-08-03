@@ -12,7 +12,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 
 
-export default class GradingShowPage extends React.Component{
+export default class OralGradingPage extends React.Component{
   
   constructor(){
     super();
@@ -22,8 +22,11 @@ export default class GradingShowPage extends React.Component{
       nowrow: undefined,
       nowsheet: undefined,
       redirect: undefined,
-      Grade1: 0,
-      Grade2: 0,
+      Bio: 0,
+      Behavior: 0,
+      Acedemic: 0,
+      Challenge: 0,
+      Total: 0,
     }
   }
 
@@ -34,7 +37,7 @@ export default class GradingShowPage extends React.Component{
 
   InitAPI = async () => {
     // Initialize the sheet - doc ID is the long id in the sheets URL
-    const doc = new GoogleSpreadsheet('1hMRtMXD753RMXQBS1w1CcDLMoiPsZBSo2AiDBFQvN2M');
+    const doc = new GoogleSpreadsheet('1mzsQvalD22B_wohp74hE9fxpXQN_zPv_eGr8hXU30Eg');
   
     // Initialize Auth - see more available options at https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
     await doc.useServiceAccountAuth({
@@ -54,9 +57,13 @@ export default class GradingShowPage extends React.Component{
   }
 
   UpdateGrade = async () => {
-    this.state.nowrow.Grade1 = this.state.Grade1;
-    this.state.nowrow.Grade2 = this.state.Grade2;
-    this.state.nowrow.TotalGrade = Number(this.state.Grade1) + Number(this.state.Grade2);
+    this.state.nowrow.Bio = this.state.Bio;
+    this.state.nowrow.Behavior = this.state.Behavior;
+    this.state.nowrow.Acedemic = this.state.Acedemic;
+    this.state.nowrow.Challenge = this.state.Challenge;
+    this.state.nowrow.Total = this.state.Total;
+    this.state.nowrow.Sum = (Number(this.state.Bio) + Number(this.state.Behavior) + Number(this.state.Acedemic) + Number(this.state.Total) + Number(this.state.Challenge)) * 5;
+    this.state.nowrow.Status = "IGraded";
     await this.state.nowrow.save();
     window.location.reload();
   }
@@ -68,7 +75,6 @@ export default class GradingShowPage extends React.Component{
       </>);
 
     const { nowrow } = this.state;
-    const essayid = nowrow.Essay.substring(33);
 
     return (
       <>
@@ -82,7 +88,7 @@ export default class GradingShowPage extends React.Component{
               <Card.Body>
                 <Form>
                   <Row>
-                    <Col className="px-2" md="4">
+                    <Col className="px-2" md="3">
                       <Form.Group>
                         <label>Name</label>
                         <Form.Control
@@ -92,7 +98,7 @@ export default class GradingShowPage extends React.Component{
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="px-2" md="4">
+                    <Col className="px-2" md="3">
                       <Form.Group>
                         <label>Passport Name</label>
                         <Form.Control
@@ -102,7 +108,7 @@ export default class GradingShowPage extends React.Component{
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="px-2" md="4">
+                    <Col className="px-2" md="3">
                       <Form.Group>
                         <label>Sex</label>
                         <Form.Control
@@ -112,29 +118,7 @@ export default class GradingShowPage extends React.Component{
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                  </Row>
-                   <Row>
-                  <Col className="px-2" md="4">
-                      <Form.Group>
-                      <label>Email</label>
-                        <Form.Control
-                          type="text"
-                          defaultValue={nowrow.Email}
-                          disabled
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col className="px-2" md="2">
-                      <Form.Group>
-                      <label>BirthDay</label>
-                        <Form.Control
-                          type="text"
-                          defaultValue={nowrow.Birthday}
-                          disabled
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col className="px-2" md="2">
+                    <Col className="px-2" md="3">
                       <Form.Group>
                       <label>Nationality</label>
                         <Form.Control
@@ -144,20 +128,8 @@ export default class GradingShowPage extends React.Component{
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="px-2" md="4">
-                      <Form.Group>
-                      <label>Where do you come from</label>
-                        <Form.Control
-                          type="text"
-                          defaultValue={nowrow.Where}
-                          disabled
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
                   </Row>
-
-
-                  <Row>
+                 <Row>
                   <Col className="px-2" md="3">
                       <Form.Group>
                       <label>Education Level</label>
@@ -272,20 +244,7 @@ export default class GradingShowPage extends React.Component{
           </Col>
           
         </Row>
-        <Row>
-          <Col md="12">
-            <Card>
-            <Card.Header>
-              <Card.Title as="h4">Essay Viewer</Card.Title>
-            </Card.Header>
-            <Card.Body>
-              <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="responsive-iframe" src={"https://drive.google.com/file/d/" + essayid + "/preview"}></iframe>
-              </div>
-            </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+
         <Row>
           <Col md="12">
             <Card>
@@ -293,39 +252,81 @@ export default class GradingShowPage extends React.Component{
               <Card.Title as="h4">Grading</Card.Title>
             </Card.Header>
             <Card.Body>
-                <Row>
-                  <Col className="px-2" md="3">
+              <Row>
+              <Col className="px-2" md="12">
+                    <Form.Group>
+                    <label>Essay Grade</label>
+                      <Form.Control
+                        type="number"
+                        defaultValue={nowrow.EssayGrade}
+                        disabled
+                      ></Form.Control>
+                    </Form.Group>
+                  </Col>
+              </Row>
+              <Row>
+                  <Col className="px-2" md="2">
                       <Form.Group>
-                      <label>Essay Grade</label>
+                      <label>自介</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Grade1}
-                          onChange={e => this.setState({ Grade1: e.target.value})}
+                          defaultValue={nowrow.Bio}
+                          onChange={e => this.setState({ Bio: e.target.value})}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="px-2" md="3">
+                    <Col className="px-2" md="2">
                       <Form.Group>
-                      <label>Interview Grade</label>
+                      <label>行為</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Grade2}
-                          onChange={e => this.setState({ Grade2: e.target.value})}
+                          defaultValue={nowrow.Behavior}
+                          onChange={e => this.setState({ Behavior: e.target.value})}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    <Col className="px-2" md="6">
+                    <Col className="px-2" md="2">
                       <Form.Group>
-                      <label>Total Grade</label>
+                      <label>學術</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.TotalGrade}
+                          defaultValue={nowrow.Acedemic}
+                          onChange={e => this.setState({ Acedemic: e.target.value})}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="2">
+                      <Form.Group>
+                      <label>挑戰</label>
+                        <Form.Control
+                          type="number"
+                          defaultValue={nowrow.Challenge}
+                          onChange={e => this.setState({ Challenge: e.target.value})}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="2">
+                      <Form.Group>
+                      <label>整體</label>
+                        <Form.Control
+                          type="number"
+                          defaultValue={nowrow.Total}
+                          onChange={e => this.setState({ Total: e.target.value})}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-2" md="2">
+                      <Form.Group>
+                      <label>總分</label>
+                        <Form.Control
+                          type="number"
+                          defaultValue={nowrow.Sum}
                           disabled
                         ></Form.Control>
                       </Form.Group>
                     </Col>
-                    </Row>
-                    <Row>
+                  </Row>
+                  <Row>
                     <Col className="px-2" md="12">
                       <Button variant="info" onClick={() => this.UpdateGrade()} > Update Grade </Button>
                     </Col>

@@ -26,7 +26,8 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 import routes from "routes.js";
 // import { getCookie } from "../components/Navbars/CookieUsage.js";
 import sidebarImage from "assets/img/sidebar-6.png";
-import GradingShowPage from "Pages/GradingShowPage";
+import EssayGradingPage from "Pages/EssayGradingPage";
+import OralGradingPage from "Pages/OralGradingPage";
 
 function Admin(props) {
   const [image, setImage] = React.useState(sidebarImage);
@@ -78,7 +79,14 @@ function Admin(props) {
                   exact
                   path={"/admin/grading/:id"}
                   render={({ match }) => (
-                    <GradingShowPage ID={match.params.id} />
+                    <EssayGradingPage ID={match.params.id} />
+                  )}
+              />
+              <Route
+                  exact
+                  path={"/admin/oralgrading/:id"}
+                  render={({ match }) => (
+                    <OralGradingPage ID={match.params.id} />
                   )}
               />
               {getRoutes(routes)}</Switch>
