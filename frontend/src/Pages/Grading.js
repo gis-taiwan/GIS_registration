@@ -5,7 +5,7 @@ import {
   Col,
   Container,
   Row,
-  Tab,
+  Form,
   Table,
   Button,
 } from "react-bootstrap";
@@ -25,6 +25,7 @@ export default class Grading extends React.Component{
       nowrow: undefined,
       nowsheet: undefined,
       redirect: undefined,
+      People: 0,
     }
   }
 
@@ -49,18 +50,25 @@ export default class Grading extends React.Component{
     }else{
       alert("Can't find file\n");
     }
-    
-    // console.log(doc.title);
-    // await doc.updateProperties({ title: 'renamed doc' });
   
-    // const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
-    // console.log(sheet.title);
-    // console.log(sheet.rowCount);
-  
-    // // adding / removing sheets
-    // const newSheet = await doc.addSheet({ title: 'hot new sheet!' });
-    // await newSheet.delete();
-  
+  }
+
+  Sort = async () => {
+    var number = Number(this.state.People);
+    const rows = this.state.nowrow;
+    var cnt = 0;
+    await rows.sort((a, b) => a.EssayGrade > b.EssayGrade ? 1 : -1)
+    .map(async (row) => {
+      console.log(row.ID, cnt, number);
+      if(cnt < number){
+        row.Status = "IUngraded";
+      }else{
+        row.Status = "Eliminated";
+      }
+      cnt += 1;
+      await row.save();
+    });
+    window.location.reload();
   }
 
   render(){
@@ -120,6 +128,23 @@ export default class Grading extends React.Component{
                   
                 </Card.Header>
                 <Card.Body className="table-full-width table-responsive px-0">
+                  <Row>
+                    <Col className="px-2" md="4">
+                    </Col>
+                    <Col className="px-2" md="6">
+                    <Form.Group>
+                          <label>No. of People Advance to Interview</label>
+                        <Form.Control
+                          type="number"
+                          onChange={e => this.setState({ People: e.target.value})}
+                        ></Form.Control>
+                      </Form.Group>
+                      
+                    </Col>
+                    <Col className="px-2" md="2">
+                    <Button variant="danger" onClick={() => this.Sort()} > Sort </Button>
+                    </Col>
+                  </Row>
                   <Table className="table-hover table-striped">
                     <thead>
                       <tr>
@@ -137,7 +162,7 @@ export default class Grading extends React.Component{
                       </tr>
                     </thead>
                     <tbody>{
-                      nowrow.map((row) => {
+                      nowrow.map((row) => {                        
                           return (
                             <tr key={row.ID} >
                               <td> {row.Name} </td>
