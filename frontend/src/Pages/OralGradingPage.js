@@ -22,6 +22,7 @@ export default class OralGradingPage extends React.Component{
       nowrow: undefined,
       nowsheet: undefined,
       redirect: undefined,
+      nowrow2: undefined,
       Bio: 0,
       Behavior: 0,
       Acedemic: 0,
@@ -46,10 +47,13 @@ export default class OralGradingPage extends React.Component{
     });
     await doc.loadInfo(); // loads document properties and worksheets
     if(doc){
-      const sheet = doc.sheetsByIndex[0];
+      const sheet = doc.sheetsByIndex[1];
+      const sheet2 = doc.sheetsByIndex[2];
       const rows = await sheet.getRows();
+      const rows2 = await sheet2.getRows();
       const nowrow = rows[this.state.editId - 1];
-      this.setState({doc: doc, nowsheet: sheet, nowrow: nowrow, Grade1: nowrow.Grade1, Grade2: nowrow.Grade2});
+      const nowrow2 = rows2[this.state.editId - 1];
+      this.setState({doc: doc, nowsheet: sheet, nowrow: nowrow, nowrow2});
     }else{
       alert("Can't find file\n");
     }
@@ -57,14 +61,14 @@ export default class OralGradingPage extends React.Component{
   }
 
   UpdateGrade = async () => {
-    this.state.nowrow.Bio = this.state.Bio;
-    this.state.nowrow.Behavior = this.state.Behavior;
-    this.state.nowrow.Acedemic = this.state.Acedemic;
-    this.state.nowrow.Challenge = this.state.Challenge;
-    this.state.nowrow.Total = this.state.Total;
-    this.state.nowrow.Sum = (Number(this.state.Bio) + Number(this.state.Behavior) + Number(this.state.Acedemic) + Number(this.state.Total) + Number(this.state.Challenge)) * 5;
-    this.state.nowrow.Status = "IGraded";
-    await this.state.nowrow.save();
+    this.state.nowrow2.Bio = this.state.Bio;
+    this.state.nowrow2.Behavior = this.state.Behavior;
+    this.state.nowrow2.Acedemic = this.state.Acedemic;
+    this.state.nowrow2.Challenge = this.state.Challenge;
+    this.state.nowrow2.Total = this.state.Total;
+    this.state.nowrow2.Sum = (Number(this.state.Bio) + Number(this.state.Behavior) + Number(this.state.Acedemic) + Number(this.state.Total) + Number(this.state.Challenge)) * 5;
+    this.state.nowrow2.Status = "IGraded";
+    await this.state.nowrow2.save();
     window.location.reload();
   }
 
@@ -74,7 +78,7 @@ export default class OralGradingPage extends React.Component{
         <Container> </Container>
       </>);
 
-    const { nowrow } = this.state;
+    const { nowrow, nowrow2 } = this.state;
 
     return (
       <>
@@ -258,7 +262,7 @@ export default class OralGradingPage extends React.Component{
                     <label>Essay Grade</label>
                       <Form.Control
                         type="number"
-                        defaultValue={nowrow.EssayGrade}
+                        defaultValue={nowrow2.EssayGrade}
                         disabled
                       ></Form.Control>
                     </Form.Group>
@@ -270,7 +274,7 @@ export default class OralGradingPage extends React.Component{
                       <label>自介</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Bio}
+                          defaultValue={nowrow2.Bio}
                           onChange={e => this.setState({ Bio: e.target.value})}
                         ></Form.Control>
                       </Form.Group>
@@ -280,7 +284,7 @@ export default class OralGradingPage extends React.Component{
                       <label>行為</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Behavior}
+                          defaultValue={nowrow2.Behavior}
                           onChange={e => this.setState({ Behavior: e.target.value})}
                         ></Form.Control>
                       </Form.Group>
@@ -290,7 +294,7 @@ export default class OralGradingPage extends React.Component{
                       <label>學術</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Acedemic}
+                          defaultValue={nowrow2.Acedemic}
                           onChange={e => this.setState({ Acedemic: e.target.value})}
                         ></Form.Control>
                       </Form.Group>
@@ -300,7 +304,7 @@ export default class OralGradingPage extends React.Component{
                       <label>挑戰</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Challenge}
+                          defaultValue={nowrow2.Challenge}
                           onChange={e => this.setState({ Challenge: e.target.value})}
                         ></Form.Control>
                       </Form.Group>
@@ -310,7 +314,7 @@ export default class OralGradingPage extends React.Component{
                       <label>整體</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Total}
+                          defaultValue={nowrow2.Total}
                           onChange={e => this.setState({ Total: e.target.value})}
                         ></Form.Control>
                       </Form.Group>
@@ -320,7 +324,7 @@ export default class OralGradingPage extends React.Component{
                       <label>總分</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.Sum}
+                          defaultValue={nowrow2.Sum}
                           disabled
                         ></Form.Control>
                       </Form.Group>

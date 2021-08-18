@@ -12,6 +12,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 
 
+
 export default class EssayGradingPage extends React.Component{
   
   constructor(){
@@ -22,8 +23,8 @@ export default class EssayGradingPage extends React.Component{
       nowrow: undefined,
       nowsheet: undefined,
       redirect: undefined,
+      nowrow2: undefined,
       Grade1: 0,
-      Grade2: 0,
     }
   }
 
@@ -43,10 +44,14 @@ export default class EssayGradingPage extends React.Component{
     });
     await doc.loadInfo(); // loads document properties and worksheets
     if(doc){
-      const sheet = doc.sheetsByIndex[0];
+      
+      const sheet = doc.sheetsByIndex[1];
+      const sheet2 = doc.sheetsByIndex[2];
       const rows = await sheet.getRows();
+      const rows2 = await sheet2.getRows();
       const nowrow = rows[this.state.editId - 1];
-      this.setState({doc: doc, nowsheet: sheet, nowrow: nowrow, Grade1: nowrow.Grade1, Grade2: nowrow.Grade2});
+      const nowrow2 = rows2[this.state.editId - 1];
+      this.setState({doc: doc, nowsheet: sheet, nowrow: nowrow, Grade1: nowrow2.EssayGrade, nowrow2: nowrow2});
     }else{
       alert("Can't find file\n");
     }
@@ -54,11 +59,9 @@ export default class EssayGradingPage extends React.Component{
   }
 
   UpdateGrade = async () => {
-    this.state.nowrow.EssayGrade = Number(this.state.Grade1);
-    // this.state.nowrow.Grade2 = this.state.Grade2;
-    // this.state.nowrow.TotalGrade = Number(this.state.Grade1) + Number(this.state.Grade2);
-    this.state.nowrow.Status = "EGraded";
-    await this.state.nowrow.save();
+    this.state.nowrow2.EssayGrade = Number(this.state.Grade1);
+    this.state.nowrow2.Status = "EGraded";
+    await this.state.nowrow2.save();
     window.location.reload();
   }
 
@@ -68,7 +71,7 @@ export default class EssayGradingPage extends React.Component{
         <Container> </Container>
       </>);
 
-    const { nowrow } = this.state;
+    const { nowrow, Grade1 } = this.state;
     const essayid = nowrow.Essay.substring(33);
 
     return (
@@ -266,7 +269,7 @@ export default class EssayGradingPage extends React.Component{
                       <label>Essay Grade</label>
                         <Form.Control
                           type="number"
-                          defaultValue={nowrow.EssayGrade}
+                          defaultValue={Grade1}
                           onChange={e => this.setState({ Grade1: e.target.value})}
                         ></Form.Control>
                       </Form.Group>

@@ -11,8 +11,7 @@ import {
 } from "react-bootstrap";
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-
-
+const nodemailer = require('nodemailer');
 
 
 export default class Grading extends React.Component{
@@ -25,6 +24,7 @@ export default class Grading extends React.Component{
       nowrow: undefined,
       nowsheet: undefined,
       redirect: undefined,
+      nowrow2: undefined,
       People: 0,
     }
   }
@@ -44,9 +44,11 @@ export default class Grading extends React.Component{
     });
     await doc.loadInfo(); // loads document properties and worksheets
     if(doc){
-      const sheet = doc.sheetsByIndex[0];
+      const sheet = doc.sheetsByIndex[1];
+      const sheet2 = doc.sheetsByIndex[2];
       const rows = await sheet.getRows();
-      this.setState({doc: doc, nowsheetlen: sheet, nowrow: rows});
+      const rows2 = await sheet2.getRows();
+      this.setState({doc: doc, nowsheetlen: sheet, nowrow: rows, nowrow2: rows2});
     }else{
       alert("Can't find file\n");
     }
@@ -71,6 +73,31 @@ export default class Grading extends React.Component{
     window.location.reload();
   }
 
+  SendMail = async () => {
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'yhung@gis-taiwan.ntu.edu.tw',
+        pass: 'hermes1111'
+      }
+    });
+
+    var mailOptions = {
+      from: 'yhung@gis-taiwan.ntu.edu.tw',
+      to: 'hermes926@gmail.com',
+      subject: 'Mail JS Test',
+      text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+  }
+
   render(){
     if(this.state.nowrow === undefined)
       return (<>
@@ -80,7 +107,7 @@ export default class Grading extends React.Component{
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />;
     }
-    const { nowrow, sheet } = this.state;
+    const { nowrow, sheet, nowrow2 } = this.state;
     
 
     const columns = [
@@ -130,6 +157,7 @@ export default class Grading extends React.Component{
                 <Card.Body className="table-full-width table-responsive px-0">
                   <Row>
                     <Col className="px-2" md="4">
+                    <Button variant="danger" onClick={() => this.SendMail()} > Send </Button>
                     </Col>
                     <Col className="px-2" md="6">
                     <Form.Group>
@@ -162,14 +190,16 @@ export default class Grading extends React.Component{
                       </tr>
                     </thead>
                     <tbody>{
-                      nowrow.map((row) => {                        
+                      nowrow.map((row) => {      
+                        const r2 = nowrow2.find((row2) => row.ID === row2.ID);
+                        
                           return (
                             <tr key={row.ID} >
                               <td> {row.Name} </td>
                               <td> {row.Sex} </td>
                               <td> {row.Nationality} </td>
                               <td> {row.Year} </td>
-                              <td> {row.Status} </td>
+                              <td> {r2.Status} </td>
                               {/* <td> {row.Grade2} </td>
                               <td> {row.TotalGrade} </td> */}
                               <td style={{float: 'right'}}>

@@ -9,13 +9,6 @@ import { Button, Card, Col } from "react-bootstrap";
 import { getCookie, setCookie } from "components/Navbars/CookieUsage";
 // import LoginAPI from "../api.js";
 
-import API from "api.js";
-
-const {LoginAPI, updateUserAPI} = API();
-
-LoginAPI("Admin", "admin"); 
-updateUserAPI("Admin", {"Role": "a"})
-
 const loginSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "Password too short.")
@@ -60,7 +53,6 @@ class LoginForm extends React.Component {
     // })
     // setSubmitting(false);
     // // }, 400);
-    LoginAPI(values.username, values.password);
     setCookie("username", values.username, 30); 
     setCookie("role", "A", 30);   
     // alert("Login Successfully!\n");
