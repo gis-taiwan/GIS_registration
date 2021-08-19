@@ -9,9 +9,10 @@ import {
   Table,
   Button,
 } from "react-bootstrap";
+import emailjs from 'emailjs-com';
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const nodemailer = require('nodemailer');
+
 
 
 export default class Grading extends React.Component{
@@ -57,11 +58,11 @@ export default class Grading extends React.Component{
 
   Sort = async () => {
     var number = Number(this.state.People);
-    const rows = this.state.nowrow;
+    const rows = this.state.nowrow2;
+    const avarows = rows.filter((row) => {return row.Status === "EGraded";});
     var cnt = 0;
-    await rows.sort((a, b) => a.EssayGrade > b.EssayGrade ? 1 : -1)
+    await avarows.sort((a, b) => Number(a.EssayGrade) < Number(b.EssayGrade) ? 1 : -1)
     .map(async (row) => {
-      console.log(row.ID, cnt, number);
       if(cnt < number){
         row.Status = "IUngraded";
       }else{
@@ -74,28 +75,22 @@ export default class Grading extends React.Component{
   }
 
   SendMail = async () => {
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'yhung@gis-taiwan.ntu.edu.tw',
-        pass: 'hermes1111'
-      }
-    });
-
-    var mailOptions = {
-      from: 'yhung@gis-taiwan.ntu.edu.tw',
-      to: 'hermes926@gmail.com',
-      subject: 'Mail JS Test',
-      text: 'That was easy!'
+    const SERVICE_ID = "service_i1krmlt";
+    const TEMPLATE_ID = "template_90gk6fm";
+    const USER_ID = "user_wq1YxAsZ6aqlrqAClr1R7";
+    var data = {
+      to_email: "hermes926@gmail.com",
+      to_name: "Hermes",
     };
 
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
+    await emailjs.send(SERVICE_ID, TEMPLATE_ID, data, USER_ID).then(
+      function (response) {
+        console.log(response.status, response.text);
+      },
+      function (err) {
+        console.log(err);
       }
-    });
+    );
   }
 
   render(){
@@ -131,14 +126,6 @@ export default class Grading extends React.Component{
         name: "Status",
         columnWidth: "15%",
       },
-      // {
-      //   name: "Grade2",
-      //   columnWidth: "5%",
-      // },
-      // {
-      //   name: "TotalGrade",
-      //   columnWidth: "10%",
-      // },
       {
         name: "",
         columnWidth: "20%",
@@ -200,8 +187,6 @@ export default class Grading extends React.Component{
                               <td> {row.Nationality} </td>
                               <td> {row.Year} </td>
                               <td> {r2.Status} </td>
-                              {/* <td> {row.Grade2} </td>
-                              <td> {row.TotalGrade} </td> */}
                               <td style={{float: 'right'}}>
                                 <Button variant="info"  onClick={() =>
                                 this.setState({

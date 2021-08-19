@@ -1,6 +1,0 @@
-{
-    "ext": "js,json",
-    "ignore": ["**/*.spec.js"],
-    "exec": "babel-node src/server.js &"
-
-}
