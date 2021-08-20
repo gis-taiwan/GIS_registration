@@ -78,19 +78,28 @@ export default class Grading extends React.Component{
     const SERVICE_ID = "service_i1krmlt";
     const TEMPLATE_ID = "template_90gk6fm";
     const USER_ID = "user_wq1YxAsZ6aqlrqAClr1R7";
-    var data = {
-      to_email: "hermes926@gmail.com",
-      to_name: "Hermes",
-    };
 
-    await emailjs.send(SERVICE_ID, TEMPLATE_ID, data, USER_ID).then(
-      function (response) {
-        console.log(response.status, response.text);
-      },
-      function (err) {
-        console.log(err);
-      }
-    );
+    const rows = this.state.nowrow2;
+    const datarows = this.state.nowrow;
+    const avarows = rows.filter((row) => {return row.Status === "IUngraded";});
+    avarows.map( async (row)  =>  {
+      const data_row = datarows.filter((nowrow) => {return nowrow.ID === row.ID;});
+      var data = {
+        to_email: data_row[0].Email,
+        to_name: data_row[0].Name,
+      };
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, data, USER_ID).then(
+        function (response) {
+          console.log(response.status, response.text);
+        },
+        function (err) {
+          console.log(err);
+        }
+      );
+    });
+    
+
+
   }
 
   render(){
