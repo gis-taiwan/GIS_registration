@@ -10,6 +10,7 @@ import {
   Button,
 } from "react-bootstrap";
 import emailjs from 'emailjs-com';
+import { getCookie } from "components/Navbars/CookieUsage";
 
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
@@ -75,6 +76,10 @@ export default class Grading extends React.Component{
   }
 
   SendMail = async () => {
+    if(getCookie("role") !== "A"){
+      alert("No privilege");
+      return ;
+    }
     const SERVICE_ID = "service_i1krmlt";
     const TEMPLATE_ID = "template_90gk6fm";
     const USER_ID = "user_wq1YxAsZ6aqlrqAClr1R7";
