@@ -4,8 +4,8 @@ import argparse
 
 # Define constrant
 time_index = [
-    "Weekends [9/18]",
-    "Weekends [9/19]",
+    "Weekends [9/25]",
+    "Weekends [9/26]",
     "Weekdays [9/20]",
     "Weekdays [9/21]",
     "Weekdays [9/22]",
@@ -42,13 +42,10 @@ def readFile(filename, *fields) -> pd.DataFrame:
 def convert_to_dict(data) -> dict:
 
     # convert table
-    time_to_gisCode = {}
-    gisCode_counter = {}
     gisCode_to_time = {}
 
     # Retrieve the data from each row
     for index, entry in data.iterrows():
-        gisCode_counter[entry["GIS Code"]] = 0
         gisCode_to_time[entry["GIS Code"]] = []
 
         for field in time_index:
@@ -57,26 +54,23 @@ def convert_to_dict(data) -> dict:
 
             available = [field + " " + i.strip() for i in entry[field].split(",")]
             for time in available:
-                time_to_gisCode[time] = entry["GIS Code"]
                 gisCode_to_time[entry["GIS Code"]].append(time)
-                gisCode_counter[entry["GIS Code"]] += 1
 
     # Return the extracted table: time -> [Email]
-    return time_to_gisCode, gisCode_to_time, gisCode_counter
+    return gisCode_to_time
 
 
 # Scheduling function
 def schedule(Applicant):
 
     # convert to table
-    time_to_gisCode, gisCode_to_time, counter = convert_to_dict(Applicant)
+    gisCode_to_time = convert_to_dict(Applicant)
 
     # sort from smallest to largest
-    gisCode_counter = sorted(counter.items(), key=lambda x: x[1])
     time_counter = {}
     result = {}
 
-    for person, _ in gisCode_counter:
+    for person in Applicant["GIS Code"]:
         minTime, bestChoice = float("inf"), ""
 
         for time in gisCode_to_time[person]:
@@ -110,17 +104,7 @@ def main():
     args = get_args()
 
     # Get the csv file content
-    Applicant = readFile(
-        args.applicant,
-        "GIS Code",
-        "Weekends [9/18]",
-        "Weekends [9/19]",
-        "Weekdays [9/20]",
-        "Weekdays [9/21]",
-        "Weekdays [9/22]",
-        "Weekdays [9/23]",
-        "Weekdays [9/24]",
-    )
+    Applicant = readFile(args.applicant, "GIS Code", *time_index)
 
     result = schedule(Applicant)
     with open("result.csv", "w") as f:
