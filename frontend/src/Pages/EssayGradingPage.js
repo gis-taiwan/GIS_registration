@@ -62,7 +62,7 @@ export default class EssayGradingPage extends React.Component{
     this.state.nowrow2.EssayGrade = Number(this.state.Grade1);
     this.state.nowrow2.Status = "EGraded";
     await this.state.nowrow2.save();
-    window.location.reload();
+    window.location.href = "../Grading";
   }
 
   render(){

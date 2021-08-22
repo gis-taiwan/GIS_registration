@@ -61,15 +61,12 @@ export default class Grading extends React.Component{
     var number = Number(this.state.People);
     const rows = this.state.nowrow2;
     const avarows = rows.filter((row) => {return row.Status === "EGraded";});
-    var cnt = 0;
-    await avarows.sort((a, b) => Number(a.EssayGrade) < Number(b.EssayGrade) ? 1 : -1)
-    .map(async (row) => {
-      if(cnt < number){
+    await avarows.map(async (row) => {
+      if(Number(row.EssayGrade) >= number){
         row.Status = "IUngraded";
       }else{
         row.Status = "Eliminated";
       }
-      cnt += 1;
       await row.save();
     });
     window.location.reload();
@@ -80,28 +77,39 @@ export default class Grading extends React.Component{
       alert("No privilege");
       return ;
     }
-    const SERVICE_ID = "service_i1krmlt";
-    const TEMPLATE_ID = "template_90gk6fm";
+    const SERVICE_ID = "service_bpko03j";
+    const TEMPLATE_ID = "template_0ozaqqr";
     const USER_ID = "user_wq1YxAsZ6aqlrqAClr1R7";
 
     const rows = this.state.nowrow2;
     const datarows = this.state.nowrow;
     const avarows = rows.filter((row) => {return row.Status === "IUngraded";});
     avarows.map( async (row)  =>  {
-      const data_row = datarows.filter((nowrow) => {return nowrow.ID === row.ID;});
+      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID && row.InterviewMail !== "Sent");});
+      const GIScode = "G22-idc" + row.ID;
       var data = {
+        to_giscode: GIScode,
         to_email: data_row[0].Email,
         to_name: data_row[0].Name,
       };
+      // console.log(data);
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, data, USER_ID).then(
         function (response) {
           console.log(response.status, response.text);
         },
         function (err) {
           console.log(err);
+          alert("Failed, sad\n");
         }
       );
+      row.InterviewMail = "Sent";
+      row.GIScode = GIScode;
+      await row.save();
+
     });
+    
+    alert("Email Sent Successfully!\n");
+    window.location.reload();
     
 
 
@@ -138,11 +146,11 @@ export default class Grading extends React.Component{
       },
       {
         name: "Status",
-        columnWidth: "15%",
+        columnWidth: "10%",
       },
       {
         name: "",
-        columnWidth: "20%",
+        columnWidth: "25%",
       },
     ];
     return (
@@ -152,17 +160,17 @@ export default class Grading extends React.Component{
             <Col md="12">
               <Card className="strpied-tabled-with-hover">
                 <Card.Header>
-                <Card.Title as="h4">Grading Page For 2022 GIS Registration</Card.Title>
+                <Card.Title as="h4">Essay Grading Page For 2022 GIS Registration</Card.Title>
                   
                 </Card.Header>
-                <Card.Body className="table-full-width table-responsive px-0">
+                <Card.Body className="table-full-width table-responsive px-2">
                   <Row>
-                    <Col className="px-2" md="4">
+                    <Col className="px-4" md="8">
                     <Button variant="danger" onClick={() => this.SendMail()} > Send </Button>
                     </Col>
-                    <Col className="px-2" md="6">
+                    <Col className="px-4" md="2">
                     <Form.Group>
-                          <label>No. of People Advance to Interview</label>
+                          <label>Standard Point</label>
                         <Form.Control
                           type="number"
                           onChange={e => this.setState({ People: e.target.value})}
@@ -211,7 +219,7 @@ export default class Grading extends React.Component{
                                 this.setState({
                                   redirect: "/admin/oralgrading/" + row.ID,
                                 })
-                              } > Oral </Button>                              
+                              } > Interview </Button>                              
                               </td>
                             </tr>
                         );
