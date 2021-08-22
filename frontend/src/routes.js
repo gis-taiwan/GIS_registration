@@ -16,11 +16,7 @@
 
 */
 import Dashboard from "Pages/Dashboard.js";
-import UserProfile from "Pages/UserProfile.js";
-import Status from "Pages/Status.js";
-import Timetable from "Pages/Timetable.js";
 import Grading from "Pages/Grading.js";
-import Scheduling from "Pages/Scheduling.js";
 import LoginForm from "Pages/Login";
 
 const dashboardRoutes = [
@@ -32,38 +28,10 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/account",
-    name: "My account",
-    icon: "nc-icon nc-circle-09",
-    component: UserProfile,
-    layout: "/admin",
-  },
-  {
-    path: "/status",
-    name: "Registration Status",
-    icon: "nc-icon nc-bell-55",
-    component: Status,
-    layout: "/admin",
-  },
-  {
-    path: "/timetable",
-    name: "Interview Time",
-    icon: "nc-icon nc-compass-05",
-    component: Timetable,
-    layout: "/admin",
-  },
-  {
     path: "/grading",
     name: "Grading",
     icon: "nc-icon nc-chart-pie-35",
     component: Grading,
-    layout: "/admin",
-  },
-  {
-    path: "/scheduling",
-    name: "Scheduling",
-    icon: "nc-icon nc-layers-3",
-    component: Scheduling,
     layout: "/admin",
   },
   {
