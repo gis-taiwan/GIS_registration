@@ -18,6 +18,7 @@
 import Dashboard from "Pages/Dashboard.js";
 import Grading from "Pages/Grading.js";
 import LoginForm from "Pages/Login";
+import InterviewIndex from "Pages/InterviewIndex";
 
 const dashboardRoutes = [
   {
@@ -29,9 +30,16 @@ const dashboardRoutes = [
   },
   {
     path: "/grading",
-    name: "Grading",
+    name: "Essay Grading",
     icon: "nc-icon nc-chart-pie-35",
     component: Grading,
+    layout: "/admin",
+  },
+  {
+    path: "/interview",
+    name: "Interview Grading",
+    icon: "nc-icon nc-chart-pie-35",
+    component: InterviewIndex,
     layout: "/admin",
   },
   {

@@ -16,7 +16,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 
 
-export default class Grading extends React.Component{
+export default class InterviewIndex extends React.Component{
   
   constructor(){
     super();
@@ -48,8 +48,10 @@ export default class Grading extends React.Component{
     if(doc){
       const sheet = doc.sheetsByIndex[1];
       const sheet2 = doc.sheetsByIndex[2];
+      var rows2 = await sheet2.getRows();
+      rows2 = rows2.filter((row) => {return (row.Status === "IUngraded" || row.Status === "IGraded" || row.Status === "Passed");});
       const rows = await sheet.getRows();
-      const rows2 = await sheet2.getRows();
+      
       this.setState({doc: doc, nowsheetlen: sheet, nowrow: rows, nowrow2: rows2});
     }else{
       alert("Can't find file\n");
@@ -64,7 +66,7 @@ export default class Grading extends React.Component{
     await avarows.map(async (row) => {
       if(Number(row.EssayGrade) >= number){
         row.Status = "IUngraded";
-        row.GIScode = "G22-idc" + row.ID;
+        // row.GIScode = "G22-idc" + row.ID;
       }else{
         row.Status = "Eliminated";
       }
@@ -104,7 +106,6 @@ export default class Grading extends React.Component{
         }
       );
       row.InterviewMail = "Sent";
-      // row.GIScode = GIScode;
       await row.save();
 
     });
@@ -130,12 +131,12 @@ export default class Grading extends React.Component{
 
     const columns = [
       {
-        name: "Name",
-        columnWidth: "10%",
+        name: "GIS code",
+        columnWidth: "15%",
       },
       {
-        name: "Sex",
-        columnWidth: "15%",
+        name: "Name",
+        columnWidth: "10%",
       },
       {
         name: "Nationality",
@@ -143,7 +144,7 @@ export default class Grading extends React.Component{
       },
       {
         name: "Year",
-        columnWidth: "25%",
+        columnWidth: "20%",
       },
       {
         name: "Status",
@@ -151,7 +152,7 @@ export default class Grading extends React.Component{
       },
       {
         name: "",
-        columnWidth: "25%",
+        columnWidth: "20%",
       },
     ];
     return (
@@ -161,7 +162,7 @@ export default class Grading extends React.Component{
             <Col md="12">
               <Card className="strpied-tabled-with-hover">
                 <Card.Header>
-                <Card.Title as="h4">Essay Grading Page For 2022 GIS Registration</Card.Title>
+                <Card.Title as="h4">Interview Grading Page For 2022 GIS Registration</Card.Title>
                   
                 </Card.Header>
                 <Card.Body className="table-full-width table-responsive px-2">
@@ -171,7 +172,7 @@ export default class Grading extends React.Component{
                     </Col>
                     <Col className="px-4" md="2">
                     <Form.Group>
-                          <label>Standard Point</label>
+                          <label>No. Passed</label>
                         <Form.Control
                           type="number"
                           onChange={e => this.setState({ People: e.target.value})}
@@ -200,27 +201,27 @@ export default class Grading extends React.Component{
                       </tr>
                     </thead>
                     <tbody>{
-                      nowrow.map((row) => {      
-                        const r2 = nowrow2.find((row2) => row.ID === row2.ID);
+                      nowrow2.map((row) => {      
+                        const r2 = nowrow.find((row2) => row.ID === row2.ID);
                         
                           return (
                             <tr key={row.ID} >
-                              <td> {row.Name} </td>
-                              <td> {row.Sex} </td>
-                              <td> {row.Nationality} </td>
-                              <td> {row.Year} </td>
-                              <td> {r2.Status} </td>
+                              <td> {row.GIScode} </td>
+                              <td> {r2.Name} </td>
+                              <td> {r2.Nationality} </td>
+                              <td> {r2.Year} </td>
+                              <td> {row.Status} </td>
                               <td style={{float: 'right'}}>
-                                <Button variant="info"  onClick={() =>
+                                {/* <Button variant="info"  onClick={() =>
                                 this.setState({
                                   redirect: "/admin/grading/" + row.ID,
                                 })
-                              } > Essay </Button>
-                                {/* <Button variant="warning"  onClick={() =>
+                              } > Essay </Button> */}
+                                <Button variant="warning"  onClick={() =>
                                 this.setState({
                                   redirect: "/admin/oralgrading/" + row.ID,
                                 })
-                              } > Interview </Button>                               */}
+                              } > Interview </Button>                              
                               </td>
                             </tr>
                         );
