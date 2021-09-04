@@ -60,11 +60,17 @@ export default class Grading extends React.Component{
   Sort = async () => {
     var number = Number(this.state.People);
     const rows = this.state.nowrow2;
-    const avarows = rows.filter((row) => {return row.Status === "EGraded";});
+    var first_row = this.state.nowrow2[0];
+    var id_cnt = Number(first_row.Count);
+    
+    const avarows = await rows.filter((row) => {return row.Status === "EGraded";});
+    console.log(avarows);
     await avarows.map(async (row) => {
       if(Number(row.EssayGrade) >= number){
         row.Status = "IUngraded";
-        row.GIScode = "G22-idc" + row.ID;
+        id_cnt += 1;
+        row.GIScode = "G22" + ("00" + id_cnt.toString()).slice (-3);
+        first_row.Count = id_cnt;
       }else{
         row.Status = "Eliminated";
       }
@@ -80,14 +86,15 @@ export default class Grading extends React.Component{
     }
     const SERVICE_ID = "service_bpko03j";
     const TEMPLATE_ID = "template_0ozaqqr";
+    const E_TEMPLATE_ID = "template_90gk6fm";
     const USER_ID = "user_wq1YxAsZ6aqlrqAClr1R7";
 
     const rows = this.state.nowrow2;
     const datarows = this.state.nowrow;
     const avarows = rows.filter((row) => {return row.Status === "IUngraded";});
     avarows.map( async (row)  =>  {
-      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID && row.InterviewMail !== "Sent");});
-      const GIScode = "G22-idc" + row.ID;
+      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID && row.Sent !== "Sent");});
+      const GIScode = row.GIScode;
       var data = {
         to_giscode: GIScode,
         to_email: data_row[0].Email,
@@ -103,12 +110,34 @@ export default class Grading extends React.Component{
           alert("Failed, sad\n");
         }
       );
-      row.InterviewMail = "Sent";
-      // row.GIScode = GIScode;
+      row.Sent = "Sent";
       await row.save();
 
     });
     
+    const e_avarows = rows.filter((row) => {return row.Status === "Eliminated";});
+    e_avarows.map( async (row)  =>  {
+      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID && row.Sent !== "Sent");});
+      var data = {
+        to_email: data_row[0].Email,
+        to_name: data_row[0].Name,
+      };
+      // console.log(data);
+      await emailjs.send(SERVICE_ID, E_TEMPLATE_ID, data, USER_ID).then(
+        function (response) {
+          console.log(response.status, response.text);
+        },
+        function (err) {
+          console.log(err);
+          alert("Failed, sad\n");
+        }
+      );
+      row.Sent = "Sent";
+      await row.save();
+
+    });
+
+
     alert("Email Sent Successfully!\n");
     window.location.reload();
     
