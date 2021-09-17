@@ -76,6 +76,8 @@ export default class Grading extends React.Component{
       }
       await row.save();
     });
+    first_row.Count = id_cnt;
+    first_row.save();
     window.location.reload();
   }
 
@@ -102,16 +104,17 @@ export default class Grading extends React.Component{
       };
       // console.log(data);
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, data, USER_ID).then(
-        function (response) {
+        async function (response) {
           console.log(response.status, response.text);
+          row.Sent = "Sent";
+          await row.save();
         },
         function (err) {
           console.log(err);
           alert("Failed, sad\n");
         }
       );
-      row.Sent = "Sent";
-      await row.save();
+      
 
     });
     
@@ -179,8 +182,12 @@ export default class Grading extends React.Component{
         columnWidth: "10%",
       },
       {
+        name: "Sent",
+        columnWidth: "10%",
+      },
+      {
         name: "",
-        columnWidth: "25%",
+        columnWidth: "15%",
       },
     ];
     return (
@@ -239,6 +246,7 @@ export default class Grading extends React.Component{
                               <td> {row.Nationality} </td>
                               <td> {row.Year} </td>
                               <td> {r2.Status} </td>
+                              <td> {r2.Sent} </td>
                               <td style={{float: 'right'}}>
                                 <Button variant="info"  onClick={() =>
                                 this.setState({
