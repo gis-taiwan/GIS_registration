@@ -77,7 +77,7 @@ export default class Grading extends React.Component{
       await row.save();
     });
     first_row.Count = id_cnt;
-    first_row.save();
+    await first_row.save();
     window.location.reload();
   }
 
