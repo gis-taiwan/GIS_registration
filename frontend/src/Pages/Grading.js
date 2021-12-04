@@ -93,16 +93,17 @@ export default class Grading extends React.Component{
 
     const rows = this.state.nowrow2;
     const datarows = this.state.nowrow;
-    const avarows = rows.filter((row) => {return row.Status === "IUngraded";});
+    const avarows = rows.filter((row) => {return (row.Status === "IUngraded" && Number(row.Code) > 80 && row.Sent === "");});
     avarows.map( async (row)  =>  {
-      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID && row.Sent !== "Sent");});
+      console.log(row.Code);
+      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID);});
       const GIScode = row.GIScode;
+      console.log(data_row);
       var data = {
         to_giscode: GIScode,
         to_email: data_row[0].Email,
         to_name: data_row[0].Name,
       };
-      // console.log(data);
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, data, USER_ID).then(
         async function (response) {
           console.log(response.status, response.text);
@@ -118,14 +119,16 @@ export default class Grading extends React.Component{
 
     });
     
-    const e_avarows = rows.filter((row) => {return row.Status === "Eliminated";});
+    const e_avarows = rows.filter((row) => {return (row.Status === "Eliminated" && Number(row.Code) > 80 && row.Sent === "");});
     e_avarows.map( async (row)  =>  {
-      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID && row.Sent !== "Sent");});
+      // console.log(row.Code);
+      const data_row = datarows.filter((nowrow) => {return (nowrow.ID === row.ID);});
+      // console.log(data_row[0].Name);
       var data = {
         to_email: data_row[0].Email,
         to_name: data_row[0].Name,
       };
-      // console.log(data);
+      console.log(data);
       await emailjs.send(SERVICE_ID, E_TEMPLATE_ID, data, USER_ID).then(
         function (response) {
           console.log(response.status, response.text);
